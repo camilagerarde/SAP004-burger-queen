@@ -1,13 +1,14 @@
 import React from "react";
-import "./App.css";
-import DuoBtn from "./components/DuoBtn/index";
+import Register from "./Pages/Register/index";
+import Login from "./Pages/Login/index";
+import { Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <DuoBtn />
-      <p>Burguer Queen</p>
-    </div>
+    <Switch>
+      <Route path="/" component={Login} exact />
+      <Route path="/register" component={Register} />
+    </Switch>
   );
 }
 
