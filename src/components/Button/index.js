@@ -1,16 +1,18 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import style from './style.module.css';
 
 const Button = (props) => {
   return (
     <button
-      onClick={props.handleClick}
+      onClick={props.onClick}
       id={props.id}
-      className={props.class || "default"}
+      className={`${style.button} ${style[props.color]}`}
+      disabled={props.disabled}
     >
-      {props.name}
+      {props.children}
     </button>
   );
 };
 
 export default Button;
+

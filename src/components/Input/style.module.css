@@ -1,0 +1,22 @@
+.label {
+  font-size: 18px;
+  line-height: 1.2em;
+  text-transform: uppercase;
+  color: #334585;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.input {
+  background: #F7F3F3;
+  border-radius: 13px;
+  border: none;
+  padding: 8px;
+  color: #EC3939;
+  display: block;
+}
+
+.container {
+  padding-bottom: 14px;
+}
+
