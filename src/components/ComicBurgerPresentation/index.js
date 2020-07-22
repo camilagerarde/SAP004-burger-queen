@@ -9,6 +9,7 @@ const ComicBurgerPresentation = () => {
     >
       <img src={Mrking} 
       className={style.img}
+      alt="logo"
       />
     </section>
   )
