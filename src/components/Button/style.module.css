@@ -1,22 +1,23 @@
 .button {
-  background: #EC3939;
+  background: #ec3939;
   border-radius: 13px;
   font-size: 24px;
   color: #ffffff;
   padding: 16px 30px;
   border: none;
   text-transform: uppercase;
+  width: 50%;
 }
 
 .salmon {
-  background-color: #EB7A8A;
+  background-color: #eb7a8a;
 }
 
 .blue {
-  background-color: #596FBC;
+  background-color: #596fbc;
 }
 
-.button:disabled{
-  background-color: grey;
+.button:disabled {
+  background-color: #a09e9e;
   cursor: not-allowed;
 }
