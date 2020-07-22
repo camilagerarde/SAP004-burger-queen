@@ -33,7 +33,6 @@ const RegisterForm = () => {
       {Occupation}
       <Input
         onChange={changeName}
-        label="name"
         id="name"
         type="text"
         value={name}
@@ -41,7 +40,6 @@ const RegisterForm = () => {
       />
       <Input
         onChange={changeEmail}
-        label="email"
         id="email"
         type="text"
         value={email}
@@ -49,15 +47,12 @@ const RegisterForm = () => {
       />
       <Input
         onChange={changePassword}
-        label="senha"
         id="senha"
         type="password"
         value={password}
         placeholder="Cadastre uma senha"
       />
-      <label htmlFor="occupation" className={style.label}>
-        cargo
-      </label>
+
       <select
         id="occupation"
         name="occupation"
