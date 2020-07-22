@@ -1,12 +1,9 @@
-import React from 'react';
-import LoginForm from '../pages/Login/LoginForm'
+import React from "react";
+import LoginForm from "../Pages/Login/LoginForm";
 
 export default {
-  title: 'LoginForm',
+  title: "LoginForm",
   component: LoginForm,
-}
+};
 
-export const Default=() => (
-  <LoginForm/>
-);
-
+export const Default = () => <LoginForm />;

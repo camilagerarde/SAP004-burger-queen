@@ -1,22 +1,54 @@
 .button {
-  background: #EC3939;
+  background: #ec3939;
   border-radius: 13px;
   font-size: 24px;
   color: #ffffff;
   padding: 16px 30px;
   border: none;
   text-transform: uppercase;
+  width: 50%;
+}
+.button:hover {
+  background: #b72828;
 }
 
 .salmon {
-  background-color: #EB7A8A;
+  background-color: #eb7a8a;
+}
+
+.salmon:hover {
+  background: #c66573;
 }
 
 .blue {
-  background-color: #596FBC;
+  background-color: #596fbc;
 }
 
-.button:disabled{
-  background-color: grey;
+.blue:hover {
+  background: #2f4287;
+}
+.green {
+  background-color: #a9bf04;
+}
+
+.green:hover {
+  background: #819300;
+}
+.darkBlue {
+  background-color: #334585;
+}
+
+.darkBlue:hover {
+  background: #1a295e;
+}
+.yellow {
+  background-color: #f4c237;
+}
+
+.yellow:hover {
+  background: #d1a321;
+}
+.button:disabled {
+  background-color: #a09e9e;
   cursor: not-allowed;
 }

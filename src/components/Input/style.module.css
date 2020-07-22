@@ -8,15 +8,15 @@
 }
 
 .input {
-  background: #F7F3F3;
+  background: #f7f3f3;
   border-radius: 13px;
   border: none;
   padding: 8px;
-  color: #EC3939;
-  display: block;
+  color: #ec3939;
+  width: 80%;
+  margin-bottom: 14px;
 }
 
-.container {
-  padding-bottom: 14px;
+.input::placeholder {
+  color: #a09e9e;
 }
-

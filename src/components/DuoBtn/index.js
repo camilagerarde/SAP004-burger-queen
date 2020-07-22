@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../Button/index";
-import "./style.css";
+import style from "./style.module.css";
 
 const DuoBtn = () => {
   const alerta = () => {
@@ -8,9 +8,13 @@ const DuoBtn = () => {
   };
 
   return (
-    <div>
-      <Button handleClick={() => alert("olá!!")} class="outra" name="Burguer" />
-      <Button handleClick={alerta} name="Queen" />
+    <div className={style.container}>
+      <Button onClick={() => alert("olá!!")} id={style.button}>
+        login
+      </Button>
+      <Button onClick={alerta} id={style.button}>
+        registro
+      </Button>
     </div>
   );
 };
