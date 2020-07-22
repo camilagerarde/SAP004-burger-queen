@@ -1,6 +1,6 @@
 import React from "react";
 import Mrking from "../../images/logo.png";
-import FormRegister from "../../components/FormRegister/";
+import FormRegister from "../../components/FormRegister";
 import Button from "../../components/Button";
 import style from "./style.module.css";
 import { Link } from "react-router-dom";
