@@ -45,11 +45,11 @@ const LoginForm = () => {
       >
         Entrar
       </Button>
-      <Link to="/register"
-      className={style.register}
-      >
-        Registrar-se
-      </Link>
+        <Link to="/register"
+        className={style.register}
+        >
+          Não possui conta? Registre-se
+        </Link>
     </div>
   );
 };
