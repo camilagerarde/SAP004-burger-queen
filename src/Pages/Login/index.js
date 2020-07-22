@@ -1,14 +1,22 @@
 import React from "react";
-import DuoBtn from "../../components/DuoBtn/index";
-import { Link } from "react-router-dom";
+import ComicBurgerPresentation from "../../components/ComicBurgerPresentation";
+import LoginForm from "./LoginForm";
+import style from "./style.module.css";
 
 function Login() {
   return (
-    <div className="login">
-      <DuoBtn />
-      <p>Burguer Queen</p>
-      <Link to="/register">Register!</Link>
-    </div>
+    <section
+      className={style.ss}
+    >
+      <ComicBurgerPresentation
+        className={style.img}
+      />
+      <div
+        className={style.form}
+      >
+        <LoginForm/>
+      </div>
+    </section>
   );
 }
 
