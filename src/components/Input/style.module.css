@@ -16,6 +16,7 @@
   color: #ec3939;
   width: 80%;
   margin-bottom: 18px;
+  flex: 100%;
 }
 
 .input::placeholder {
@@ -26,4 +27,5 @@
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
+  width: 80%;
 }
