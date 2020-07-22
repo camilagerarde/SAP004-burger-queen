@@ -1,21 +1,21 @@
-import React, {useState} from 'react';
-import Input from '../../../components/Input';
-import Button from '../../../components/Button';
+import React, { useState } from "react";
+import Input from "../../../components/Input";
+import Button from "../../../components/Button";
 //perguntar
 const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const changeEmail = (element) => {
-    setEmail(element.target.value)
-  }
+    setEmail(element.target.value);
+  };
 
   const changePassword = (element) => {
-    setPassword(element.target.value)
-  }
+    setPassword(element.target.value);
+  };
   return (
     <>
-      <Input 
+      <Input
         onChange={changeEmail}
         label="email"
         id="email"
@@ -32,7 +32,7 @@ const LoginForm = () => {
       />
       <Button>Entrar</Button>
     </>
-  )
-}
+  );
+};
 
 export default LoginForm;
