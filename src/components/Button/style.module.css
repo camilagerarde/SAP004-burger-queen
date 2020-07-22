@@ -8,15 +8,46 @@
   text-transform: uppercase;
   width: 50%;
 }
+.button:hover {
+  background: #b72828;
+}
 
 .salmon {
   background-color: #eb7a8a;
+}
+
+.salmon:hover {
+  background: #c66573;
 }
 
 .blue {
   background-color: #596fbc;
 }
 
+.blue:hover {
+  background: #2f4287;
+}
+.green {
+  background-color: #a9bf04;
+}
+
+.green:hover {
+  background: #819300;
+}
+.darkBlue {
+  background-color: #334585;
+}
+
+.darkBlue:hover {
+  background: #1a295e;
+}
+.yellow {
+  background-color: #f4c237;
+}
+
+.yellow:hover {
+  background: #d1a321;
+}
 .button:disabled {
   background-color: #a09e9e;
   cursor: not-allowed;
