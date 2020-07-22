@@ -1,12 +1,13 @@
 .button {
   background: #ec3939;
   border-radius: 13px;
-  font-size: 24px;
+  font-size: 18px;
   color: #ffffff;
-  padding: 16px 30px;
+  padding: 14px 24px;
   border: none;
   text-transform: uppercase;
-  width: 50%;
+  width: 80%;
+  margin-top: 20px;
 }
 .button:hover {
   background: #b72828;

@@ -1,6 +1,6 @@
 import React from "react";
-import Register from "./Pages/Register/index";
-import Login from "./Pages/Login/index";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 import { Switch, Route } from "react-router-dom";
 
 function App() {

@@ -4,19 +4,26 @@
   text-transform: uppercase;
   color: #334585;
   display: block;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
+  margin-top: 18px;
 }
 
 .input {
   background: #f7f3f3;
-  border-radius: 13px;
+  border-radius: 8px;
   border: none;
   padding: 8px;
   color: #ec3939;
   width: 80%;
-  margin-bottom: 14px;
+  margin-bottom: 18px;
 }
 
 .input::placeholder {
   color: #a09e9e;
+}
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }

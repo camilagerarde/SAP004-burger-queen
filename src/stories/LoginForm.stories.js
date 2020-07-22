@@ -1,5 +1,5 @@
 import React from "react";
-import LoginForm from "../Pages/Login/LoginForm";
+import LoginForm from "../pages/Login/LoginForm";
 
 export default {
   title: "LoginForm",

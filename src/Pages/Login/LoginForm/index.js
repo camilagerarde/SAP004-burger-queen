@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
-//perguntar
+import style from "./style.module.css"
+import { Link } from "react-router-dom";
+
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,8 +15,15 @@ const LoginForm = () => {
   const changePassword = (element) => {
     setPassword(element.target.value);
   };
+
+  const submitLogin = () => {
+    console.log(email, password)
+  }
+
   return (
-    <>
+    <div
+      className={style.container}
+    >
       <Input
         onChange={changeEmail}
         label="email"
@@ -30,8 +39,18 @@ const LoginForm = () => {
         type="password"
         value={password}
       />
-      <Button>Entrar</Button>
-    </>
+      <Button
+        className={style.button}
+        onClick={submitLogin}
+      >
+        Entrar
+      </Button>
+      <Link to="/register"
+      className={style.register}
+      >
+        Registrar-se
+      </Link>
+    </div>
   );
 };
 
