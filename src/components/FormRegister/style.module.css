@@ -1,0 +1,36 @@
+body {
+  background: #f27a5f;
+}
+
+.label {
+  font-size: 18px;
+  line-height: 1.2em;
+  text-transform: uppercase;
+  color: #334585;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.select {
+  background: #f7f3f3;
+  border-radius: 13px;
+  border: none;
+  padding: 8px;
+  color: #a09e9e;
+  display: block;
+  margin-bottom: 14px;
+  width: 80%;
+}
+
+.select option {
+  color: #334585;
+}
+
+.container {
+  padding-bottom: 14px;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 80%;
+}
