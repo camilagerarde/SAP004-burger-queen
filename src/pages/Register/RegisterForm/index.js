@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as firebase from "firebase/app";
+//import * as firebase from "firebase/app";
 // import "firebase/auth";
 // import "firebase/firestore";
 import style from "./style.module.css";
@@ -32,23 +32,23 @@ const RegisterForm = () => {
   const submitRegister = (event) => {
     event.preventDefault();
     console.log(name, email, password, occupation);
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        const addUser = firebase.firestore().collection("users");
-        const user = {
-          name: name,
-          email: email,
-          password: password,
-          occupation: occupation,
-          user_uid: firebase.auth().currentUser.uid,
-        };
-        addUser.add(user);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    // firebase
+    //   .auth()
+    //   .createUserWithEmailAndPassword(email, password)
+    //   .then(() => {
+    //     const addUser = firebase.firestore().collection("users");
+    //     const user = {
+    //       name: name,
+    //       email: email,
+    //       password: password,
+    //       occupation: occupation,
+    //       user_uid: firebase.auth().currentUser.uid,
+    //     };
+    //     addUser.add(user);
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   });
   };
 
   return (

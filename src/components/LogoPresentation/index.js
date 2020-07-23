@@ -1,5 +1,5 @@
 import React from "react";
-import Mrking from "../../images/logo.png";
+import Mrking from "./logo.png";
 import style from "./style.module.css";
 
 const LogoPresentation = () => {
