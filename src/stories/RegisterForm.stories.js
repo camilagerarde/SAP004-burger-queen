@@ -1,5 +1,5 @@
 import React from "react";
-import RegisterForm from "../components/FormRegister/";
+import RegisterForm from "../pages/Register/FormRegister/";
 
 export default {
   title: "RegisterForm",
