@@ -46,7 +46,7 @@ const RegisterForm = () => {
         id="email"
         type="text"
         value={email}
-        placeholder="Seu e-mail"
+        placeholder="email@email.com"
       />
       <Input
         onChange={changePassword}
@@ -54,7 +54,7 @@ const RegisterForm = () => {
         id="senha"
         type="password"
         value={password}
-        placeholder="Cadastre uma senha"
+        placeholder="******"
       />
       <label htmlFor="occupation" className={style.label}>
         Função
@@ -70,7 +70,7 @@ const RegisterForm = () => {
         <option value="waiter">Atendente</option>
       </select>
       <Button>Registrar</Button>
-      <Link className={style.link} to="/">
+      <Link className={style.link} to="/" title="Voltar para login">
         VOLTAR
       </Link>
     </form>

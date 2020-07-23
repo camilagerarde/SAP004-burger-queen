@@ -4,21 +4,22 @@
   flex-direction: column;
   justify-content: center;
   padding: 20px;
-  width: 100%;
+  width: 80%;
 }
 
 .label {
   align-self: flex-start;
   font-size: 18px;
   line-height: 1.2em;
-  margin-top: 14px;
+  margin-top: 10px;
   text-transform: uppercase;
+  padding-left: 10%;
 }
 
 .select {
   background: #f7f3f3;
   border: none;
-  border-radius: 13px;
+  border-radius: 8px;
   color: #a09e9e;
   margin: 14px 0 35px 0;
   padding: 8px;
@@ -39,17 +40,16 @@
   margin-top: 25px;
   color: #334585;
   text-decoration: none;
+  transition: font-size 80ms;
 }
 
 .link:active,
 .link:hover {
-  transform: scale(1.1);
+  text-decoration: underline;
+  font-size: 16.5px;
 }
 
 @media (min-width: 1200px) {
-  .label {
-    margin-top: 10px;
-  }
   .select {
     margin: 10px 0 30px;
   }
