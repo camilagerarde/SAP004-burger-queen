@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
-import style from "./style.module.css";
+import style from "./style.module.css"
 import { Link } from "react-router-dom";
+import firebase from "../../../utils/firebase";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("")
 
   const changeEmail = (element) => {
     setEmail(element.target.value);
@@ -17,7 +19,22 @@ const LoginForm = () => {
   };
 
   const submitLogin = () => {
-    console.log(email, password);
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log("logou");
+        setError("");
+      }).catch((errorLogin) => {
+        const errorCode = errorLogin.code;
+        if (errorCode === 'auth/wrong-password') {
+          setError('Senha inválida.');
+        } else if (errorCode === 'auth/user-not-found') {
+          setError('Email não encontrado.');
+        } else {
+          setError('Email não encontrado.');
+        }
+      });
   };
 
   return (
@@ -38,6 +55,7 @@ const LoginForm = () => {
         value={password}
         placeholder="******"
       />
+      {error}
       <Button className={style.button} onClick={submitLogin}>
         Entrar
       </Button>

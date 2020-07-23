@@ -1,8 +1,8 @@
 //import firebase from "firebase";
-import * as firebase from "firebase/app";
-import Rebase from "re-base";
-import "firebase/auth";
-import "firebase/firestore";
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,7 +17,4 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-const db = firebase.database(firebaseConfig);
-const config = Rebase.createClass(db);
-
-export default config;
+export default firebase;
