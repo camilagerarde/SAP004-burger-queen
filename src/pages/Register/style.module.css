@@ -1,23 +1,35 @@
-.img {
-  max-width: 40%;
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.sobre,
+figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+figure {
+  width: 100vw;
 }
 
 .sobre {
-  display: flex;
+  background: #f27a5f;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  height: 100vh;
 }
 
-#button {
-  margin: 0 30px 0 30px;
-  width: 40%;
+.img {
+  min-width: 60%;
+  max-width: 40%;
 }
 
-.duoBtn {
-  display: flex;
-  align-items: center;
+@media (min-width: 1200px) {
+  .img {
+    min-width: 50%;
+  }
+  .sobre {
+    flex-direction: row;
+  }
 }
