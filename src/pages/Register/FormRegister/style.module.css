@@ -1,0 +1,56 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+}
+
+.label {
+  align-self: flex-start;
+  font-size: 18px;
+  line-height: 1.2em;
+  margin-top: 14px;
+  text-transform: uppercase;
+}
+
+.select {
+  background: #f7f3f3;
+  border: none;
+  border-radius: 13px;
+  color: #a09e9e;
+  margin: 14px 0 35px 0;
+  padding: 8px;
+  width: 80%;
+}
+
+.label,
+.select option {
+  color: #334585;
+}
+
+.select,
+.select option {
+  font-size: 15px;
+}
+
+.link {
+  margin-top: 25px;
+  color: #334585;
+  text-decoration: none;
+}
+
+.link:active,
+.link:hover {
+  transform: scale(1.1);
+}
+
+@media (min-width: 1200px) {
+  .label {
+    margin-top: 10px;
+  }
+  .select {
+    margin: 10px 0 30px;
+  }
+}
