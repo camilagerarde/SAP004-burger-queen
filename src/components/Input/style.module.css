@@ -5,7 +5,7 @@
   color: #334585;
   display: block;
   margin-bottom: 10px;
-  margin-top: 18px;
+  margin-top: 10px;
 }
 
 .input {
@@ -15,12 +15,13 @@
   padding: 8px;
   color: #ec3939;
   width: 80%;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
   flex: 100%;
 }
 
 .input::placeholder {
   color: #a09e9e;
+  font-size: 15px;
 }
 
 .container {

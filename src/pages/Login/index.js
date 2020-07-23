@@ -1,20 +1,14 @@
 import React from "react";
-import ComicBurgerPresentation from "../../components/ComicBurgerPresentation";
+import LogoPresentation from "../../components/LogoPresentation";
 import LoginForm from "./LoginForm";
 import style from "./style.module.css";
 
 function Login() {
   return (
-    <section
-      className={style.ss}
-    >
-      <ComicBurgerPresentation
-        className={style.img}
-      />
-      <div
-        className={style.form}
-      >
-        <LoginForm/>
+    <section className={style.container}>
+      <LogoPresentation />
+      <div className={style.form}>
+        <LoginForm />
       </div>
     </section>
   );

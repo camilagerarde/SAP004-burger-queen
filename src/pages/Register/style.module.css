@@ -1,23 +1,19 @@
-.img {
-  max-width: 40%;
+body {
+  font-family: "Roboto", sans-serif;
 }
 
-.sobre {
+.container {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+  background: #f27a5f;
+  flex-direction: column;
+  width: 100%;
 }
 
-#button {
-  margin: 0 30px 0 30px;
-  width: 40%;
-}
-
-.duoBtn {
-  display: flex;
-  align-items: center;
+@media (min-width: 1200px) {
+  .container {
+    flex-direction: row;
+    height: 100vh;
+  }
 }
