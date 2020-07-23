@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
-import style from "./style.module.css"
+import style from "./style.module.css";
 import { Link } from "react-router-dom";
 
 const LoginForm = () => {
@@ -17,20 +17,18 @@ const LoginForm = () => {
   };
 
   const submitLogin = () => {
-    console.log(email, password)
-  }
+    console.log(email, password);
+  };
 
   return (
-    <div
-      className={style.container}
-    >
+    <div className={style.container}>
       <Input
         onChange={changeEmail}
         label="email"
         id="email"
         type="text"
         value={email}
-        placeholder="teste@teste.com"
+        placeholder="email@email.com"
       />
       <Input
         onChange={changePassword}
@@ -38,18 +36,14 @@ const LoginForm = () => {
         id="senha"
         type="password"
         value={password}
+        placeholder="******"
       />
-      <Button
-        className={style.button}
-        onClick={submitLogin}
-      >
+      <Button className={style.button} onClick={submitLogin}>
         Entrar
       </Button>
-        <Link to="/register"
-        className={style.register}
-        >
-          Não possui conta? Registre-se
-        </Link>
+      <Link to="/register" className={style.register} title="Registre-se">
+        Não possui conta? Registre-se
+      </Link>
     </div>
   );
 };
