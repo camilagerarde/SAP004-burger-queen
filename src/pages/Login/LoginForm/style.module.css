@@ -14,4 +14,12 @@
   width: 80%;
   justify-content: flex-end;
   color: #334585;
+  text-decoration: none;
+  transition: font-size 80ms;
+}
+
+.register:active,
+.register:hover {
+  text-decoration: underline;
+  font-size: 16.3px;
 }
