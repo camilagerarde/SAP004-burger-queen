@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import * as firebase from "firebase/app";
+// import "firebase/auth";
+// import "firebase/firestore";
 import style from "./style.module.css";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
@@ -8,7 +11,7 @@ const RegisterForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [Occupation, setOccupation] = useState("");
+  const [occupation, setOccupation] = useState("");
 
   const changeName = (element) => {
     setName(element.target.value);
@@ -26,12 +29,30 @@ const RegisterForm = () => {
     setOccupation(element.target.value);
   };
 
+  const submitRegister = (event) => {
+    event.preventDefault();
+    console.log(name, email, password, occupation);
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        const addUser = firebase.firestore().collection("users");
+        const user = {
+          name: name,
+          email: email,
+          password: password,
+          occupation: occupation,
+          user_uid: firebase.auth().currentUser.uid,
+        };
+        addUser.add(user);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <form className={style.container}>
-      {name}
-      {email}
-      {password}
-      {Occupation}
       <Input
         onChange={changeName}
         label="nome"
@@ -69,8 +90,8 @@ const RegisterForm = () => {
         <option value="kitchen">Cozinheiro(a)</option>
         <option value="waiter">Atendente</option>
       </select>
-      <Button>Registrar</Button>
-      <Link className={style.link} to="/" title="Voltar para login">
+      <Button onClick={submitRegister}>Registrar</Button>
+      <Link className={style.link} title="Voltar para login" to="/">
         VOLTAR
       </Link>
     </form>
