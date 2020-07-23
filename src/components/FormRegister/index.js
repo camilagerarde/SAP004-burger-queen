@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import style from "./style.module.css";
 import Input from "../Input";
 import Button from "../Button";
+import { Link } from "react-router-dom";
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
@@ -33,6 +34,7 @@ const RegisterForm = () => {
       {Occupation}
       <Input
         onChange={changeName}
+        label="nome"
         id="name"
         type="text"
         value={name}
@@ -40,6 +42,7 @@ const RegisterForm = () => {
       />
       <Input
         onChange={changeEmail}
+        label="e-mail"
         id="email"
         type="text"
         value={email}
@@ -47,12 +50,15 @@ const RegisterForm = () => {
       />
       <Input
         onChange={changePassword}
+        label="senha"
         id="senha"
         type="password"
         value={password}
         placeholder="Cadastre uma senha"
       />
-
+      <label htmlFor="occupation" className={style.label}>
+        Função
+      </label>
       <select
         id="occupation"
         name="occupation"
@@ -64,6 +70,9 @@ const RegisterForm = () => {
         <option value="waiter">Atendente</option>
       </select>
       <Button>Registrar</Button>
+      <Link className={style.link} to="/">
+        VOLTAR
+      </Link>
     </form>
   );
 };
