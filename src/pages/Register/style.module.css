@@ -9,11 +9,17 @@ body {
   background: #f27a5f;
   flex-direction: column;
   width: 100%;
+  height: 100vh;
 }
 
 @media (min-width: 1200px) {
   .container {
     flex-direction: row;
-    height: 100vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    height: auto;
   }
 }

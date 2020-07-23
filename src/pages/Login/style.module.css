@@ -6,6 +6,7 @@
   margin-left: auto;
   margin-right: auto;
   background: #f27a5f;
+  height: 100vh;
 }
 
 .form {
@@ -21,6 +22,5 @@
 @media (min-width: 1200px) {
   .container {
     flex-direction: row;
-    height: 100vh;
   }
 }
