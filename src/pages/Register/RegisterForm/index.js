@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-//import * as firebase from "firebase/app";
-// import "firebase/auth";
-// import "firebase/firestore";
+import firebase from "../../../utils/firebase";
 import style from "./style.module.css";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
@@ -31,24 +29,34 @@ const RegisterForm = () => {
 
   const submitRegister = (event) => {
     event.preventDefault();
-    console.log(name, email, password, occupation);
-    // firebase
-    //   .auth()
-    //   .createUserWithEmailAndPassword(email, password)
-    //   .then(() => {
-    //     const addUser = firebase.firestore().collection("users");
-    //     const user = {
-    //       name: name,
-    //       email: email,
-    //       password: password,
-    //       occupation: occupation,
-    //       user_uid: firebase.auth().currentUser.uid,
-    //     };
-    //     addUser.add(user);
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   });
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        const userUID = firebase.auth().currentUser.uid;
+        firebase.firestore().collection("users").doc(userUID).set({
+          name,
+          email,
+          occupation,
+          userUID,
+        });
+        console.log("foi!!");
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+
+    //   db.collection("users").add({
+    //     first: "Ada",
+    //     last: "Lovelace",
+    //     born: 1815
+    // })
+    // .then(function(docRef) {
+    //     console.log("Document written with ID: ", docRef.id);
+    // })
+    // .catch(function(error) {
+    //     console.error("Error adding document: ", error);
+    // });
   };
 
   return (
