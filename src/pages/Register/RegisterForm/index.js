@@ -88,7 +88,7 @@ const RegisterForm = () => {
       >
         <option value="">Selecione a sua função</option>
         <option value="kitchen">Cozinheiro(a)</option>
-        <option value="waiter">Atendente</option>
+        <option value="restaurant">Atendente</option>
       </select>
       <Button onClick={submitRegister}>Registrar</Button>
       <Link className={style.link} title="Voltar para login" to="/">
