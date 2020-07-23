@@ -1,0 +1,15 @@
+.figure {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.img {
+  max-width: 40%;
+}
+
+@media (min-width: 1200px) {
+  .img {
+    min-width: 50%;
+  }
+}
