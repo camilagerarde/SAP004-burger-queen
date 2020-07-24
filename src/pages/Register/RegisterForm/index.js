@@ -33,6 +33,11 @@ const RegisterForm = () => {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
+        firebase.auth().currentUser.updateProfile({
+          displayName: name,
+        });
+      })
+      .then(() => {
         const userUID = firebase.auth().currentUser.uid;
         firebase.firestore().collection("users").doc(userUID).set({
           name,
@@ -45,18 +50,6 @@ const RegisterForm = () => {
       .catch(function (error) {
         console.error(error);
       });
-
-    //   db.collection("users").add({
-    //     first: "Ada",
-    //     last: "Lovelace",
-    //     born: 1815
-    // })
-    // .then(function(docRef) {
-    //     console.log("Document written with ID: ", docRef.id);
-    // })
-    // .catch(function(error) {
-    //     console.error("Error adding document: ", error);
-    // });
   };
 
   return (
