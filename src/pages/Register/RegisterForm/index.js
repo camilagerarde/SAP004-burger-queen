@@ -4,12 +4,14 @@ import style from "./style.module.css";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import { Link } from "react-router-dom";
+import showError from "../../utils/error";
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [occupation, setOccupation] = useState("");
+  const [error, setError] = useState("");
 
   const changeName = (element) => {
     setName(element.target.value);
@@ -29,27 +31,34 @@ const RegisterForm = () => {
 
   const submitRegister = (event) => {
     event.preventDefault();
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        firebase.auth().currentUser.updateProfile({
-          displayName: name,
+    if (!name || !password || !email || !occupation) {
+      const error = "Preencha todos os campos";
+      setError(error);
+    } else {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          firebase.auth().currentUser.updateProfile({
+            displayName: name,
+          });
+        })
+        .then(() => {
+          const userUID = firebase.auth().currentUser.uid;
+          firebase.firestore().collection("users").doc(userUID).set({
+            name,
+            email,
+            occupation,
+            userUID,
+          });
+          console.log("foi!!");
+        })
+        .catch(function (error) {
+          const errorCode = error.code;
+          const errorTranslate = showError(errorCode);
+          setError(errorTranslate);
         });
-      })
-      .then(() => {
-        const userUID = firebase.auth().currentUser.uid;
-        firebase.firestore().collection("users").doc(userUID).set({
-          name,
-          email,
-          occupation,
-          userUID,
-        });
-        console.log("foi!!");
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    }
   };
 
   return (
@@ -73,7 +82,7 @@ const RegisterForm = () => {
       <Input
         onChange={changePassword}
         label="senha"
-        id="senha"
+        id="password"
         type="password"
         value={password}
         placeholder="******"
@@ -89,8 +98,9 @@ const RegisterForm = () => {
       >
         <option value="">Selecione a sua função</option>
         <option value="kitchen">Cozinheiro(a)</option>
-        <option value="restaurant">Atendente</option>
+        <option value="hall">Atendente</option>
       </select>
+      <p className={style.error}>{error}</p>
       <Button onClick={submitRegister}>Registrar</Button>
       <Link className={style.link} title="Voltar para login" to="/">
         VOLTAR

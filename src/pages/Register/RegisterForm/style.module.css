@@ -16,6 +16,11 @@
   padding-left: 10%;
 }
 
+.label,
+.error {
+  color: #334585;
+}
+
 .select {
   background: #f7f3f3;
   border: none;
@@ -30,7 +35,6 @@
   color: #ec3939;
 }
 
-.label,
 .select option {
   color: #ec3939;
 }
@@ -40,6 +44,10 @@
   font-size: 15px;
 }
 
+.error {
+  font-weight: bold;
+}
+
 .link {
   margin-top: 25px;
   color: #334585;
@@ -47,8 +55,8 @@
   transition: font-size 80ms;
 }
 
-.link:active,
-.link:hover {
+.link:hover,
+.link:active {
   text-decoration: underline;
   font-size: 16.5px;
 }
