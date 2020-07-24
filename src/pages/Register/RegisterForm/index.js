@@ -10,6 +10,7 @@ const RegisterForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [occupation, setOccupation] = useState("");
   const [error, setError] = useState("");
 
@@ -25,6 +26,10 @@ const RegisterForm = () => {
     setPassword(element.target.value);
   };
 
+  const changeConfirmPassword = (element) => {
+    setConfirmPassword(element.target.value);
+  };
+
   const changeOccupation = (element) => {
     setOccupation(element.target.value);
   };
@@ -33,6 +38,9 @@ const RegisterForm = () => {
     event.preventDefault();
     if (!name || !password || !email || !occupation) {
       const error = "Preencha todos os campos";
+      setError(error);
+    } else if (password !== confirmPassword) {
+      const error = "As senhas digitadas não conferem";
       setError(error);
     } else {
       firebase
@@ -85,6 +93,14 @@ const RegisterForm = () => {
         id="password"
         type="password"
         value={password}
+        placeholder="******"
+      />
+      <Input
+        onChange={changeConfirmPassword}
+        label="confirme a senha"
+        id="confirmPassword"
+        type="password"
+        value={confirmPassword}
         placeholder="******"
       />
       <label htmlFor="occupation" className={style.label}>
