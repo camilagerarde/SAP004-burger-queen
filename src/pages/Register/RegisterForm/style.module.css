@@ -16,6 +16,11 @@
   padding-left: 10%;
 }
 
+.label,
+.error {
+  color: #334585;
+}
+
 .select {
   background: #f7f3f3;
   border: none;
@@ -26,14 +31,21 @@
   width: 80%;
 }
 
-.label,
+.select:focus {
+  color: #ec3939;
+}
+
 .select option {
-  color: #334585;
+  color: #ec3939;
 }
 
 .select,
 .select option {
   font-size: 15px;
+}
+
+.error {
+  font-weight: bold;
 }
 
 .link {
@@ -43,8 +55,8 @@
   transition: font-size 80ms;
 }
 
-.link:active,
-.link:hover {
+.link:hover,
+.link:active {
   text-decoration: underline;
   font-size: 16.5px;
 }
