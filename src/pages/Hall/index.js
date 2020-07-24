@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./style.module.css";
 
-function Restaurant() {
+function Hall() {
   return (
     <section className={style.container}>
       <h1>SALÃO</h1>
@@ -9,4 +9,4 @@ function Restaurant() {
   );
 }
 
-export default Restaurant;
+export default Hall;
