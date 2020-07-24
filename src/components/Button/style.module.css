@@ -53,3 +53,33 @@
   background-color: #a09e9e;
   cursor: not-allowed;
 }
+
+.lightBlue {
+  background: #A0E7F2;
+  color: #334585;
+}
+
+.lightBlue:hover {
+  background: #61ddf0;
+  color: #334585;
+}
+
+.lightOrange {
+  background: #FFDAA4;
+  color: #334585;
+}
+
+.lightOrange:hover {
+  background: #F5CD8F;
+  color: #334585;
+}
+
+.lightRed {
+  background: #FBA7A7;
+  color: #334585;
+}
+
+.lightRed:hover {
+  background: #f3aaaa;
+  color: #334585;
+}
