@@ -26,9 +26,13 @@
   width: 80%;
 }
 
+.select:focus {
+  color: #ec3939;
+}
+
 .label,
 .select option {
-  color: #334585;
+  color: #ec3939;
 }
 
 .select,
