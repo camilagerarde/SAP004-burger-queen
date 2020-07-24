@@ -36,7 +36,7 @@ const RegisterForm = () => {
 
   const submitRegister = (event) => {
     event.preventDefault();
-    if (!name || !password || !email || !occupation) {
+    if (!name || !email || !password || !confirmPassword || !occupation) {
       const error = "Preencha todos os campos";
       setError(error);
     } else if (password !== confirmPassword) {
