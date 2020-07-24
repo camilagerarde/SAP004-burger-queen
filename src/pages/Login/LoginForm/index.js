@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
-import style from "./style.module.css"
+import style from "./style.module.css";
 import { Link } from "react-router-dom";
 import firebase from "../../../utils/firebase";
+import showError from "../../utils/error";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
 
   const changeEmail = (element) => {
     setEmail(element.target.value);
@@ -25,15 +26,11 @@ const LoginForm = () => {
       .then(() => {
         console.log("logou");
         setError("");
-      }).catch((errorLogin) => {
-        const errorCode = errorLogin.code;
-        if (errorCode === 'auth/wrong-password') {
-          setError('Senha inválida.');
-        } else if (errorCode === 'auth/user-not-found') {
-          setError('Email não encontrado.');
-        } else {
-          setError('Email não encontrado.');
-        }
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorTranslate = showError(errorCode);
+        setError(errorTranslate);
       });
   };
 
@@ -55,7 +52,7 @@ const LoginForm = () => {
         value={password}
         placeholder="******"
       />
-      {error}
+      <p className={style.error}>{error}</p>
       <Button className={style.button} onClick={submitLogin}>
         Entrar
       </Button>
