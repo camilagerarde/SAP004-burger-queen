@@ -1,12 +1,15 @@
 import React from "react";
-import style from "./style.module.css";
+import NavigateTo from "../../components/NavigateTo";
+import Card from "../../components/Card";
 
-function Hall() {
+
+const PageHall = () => {
   return (
-    <section className={style.container}>
-      <h1>SALÃO</h1>
-    </section>
+    <>
+    <NavigateTo/>
+    <Card></Card>
+    </> 
   );
-}
+};
 
-export default Hall;
+export default PageHall;
