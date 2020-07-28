@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
-import style from "./style.module.css"
+import showError from "../../utils/error";
+import style from "./style.module.css";
 import { Link, useHistory } from "react-router-dom";
 import firebase from "../../../utils/firebase";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
   const history = useHistory();
 
   const changeEmail = (element) => {
@@ -25,42 +26,36 @@ const LoginForm = () => {
       .signInWithEmailAndPassword(email, password)
       .then((data) => {
         setError("");
-        console.log(data.user.uid)
-        firebase.firestore()
-        .collection('users')
-        .doc(data.user.uid)
-        .get()
-        .then((doc) => {
-          const userData = doc.data()
-          if(userData.occupation === 'kitchen'){
-            return history.push("/kitchen/inProgress");
-          }
-          return history.push("/hall/new");
-        })
+        console.log(data.user.uid);
+        firebase
+          .firestore()
+          .collection("users")
+          .doc(data.user.uid)
+          .get()
+          .then((doc) => {
+            const userData = doc.data();
+            if (userData.occupation === "kitchen") {
+              return history.push("/kitchen/inProgress");
+            }
+            return history.push("/hall/new");
+          });
       })
-      .catch((errorLogin) => {
-        const errorCode = errorLogin.code;
-        if (errorCode === 'auth/wrong-password') {
-          setError('Senha inválida.');
-        } else if (errorCode === 'auth/user-not-found') {
-          setError('Email não encontrado.');
-        } else {
-          setError('Email não encontrado.');
-        }
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorTranslate = showError(errorCode);
+        setError(errorTranslate);
       });
-  }
+  };
 
   return (
-    <div
-      className={style.container}
-    >
+    <div className={style.container}>
       <Input
         onChange={changeEmail}
         label="email"
         id="email"
         type="text"
         value={email}
-        placeholder="teste@teste.com"
+        placeholder="email@email.com"
       />
       <Input
         onChange={changePassword}
@@ -68,18 +63,13 @@ const LoginForm = () => {
         id="senha"
         type="password"
         value={password}
+        placeholder="******"
       />
-      {error}
-      <Button
-        onClick={submitLogin}
-      >
-        Entrar
-      </Button>
-        <Link to="/register"
-        className={style.register}
-        >
-          Não possui conta? Registre-se
-        </Link>
+      <p className={style.error}>{error}</p>
+      <Button onClick={submitLogin}>Entrar</Button>
+      <Link to="/register" className={style.register} title="Registre-se">
+        Não possui conta? Registre-se
+      </Link>
     </div>
   );
 };
