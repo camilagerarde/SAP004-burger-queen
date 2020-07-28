@@ -5,6 +5,7 @@ import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import { Link, useHistory } from "react-router-dom";
 import showError from "../../utils/error";
+import Swal from "sweetalert2";
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
@@ -12,7 +13,6 @@ const RegisterForm = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [occupation, setOccupation] = useState("");
-  const [error, setError] = useState("");
   const history = useHistory();
 
   const changeName = (element) => {
@@ -35,14 +35,23 @@ const RegisterForm = () => {
     setOccupation(element.target.value);
   };
 
+  const alertError = (error) => {
+    Swal.fire({
+      text: error,
+      icon: "error",
+      confirmButtonColor: "#334585",
+      width: "25rem",
+    });
+  };
+
   const submitRegister = (event) => {
     event.preventDefault();
     if (!name || !email || !password || !confirmPassword || !occupation) {
       const error = "Preencha todos os campos";
-      setError(error);
+      alertError(error);
     } else if (password !== confirmPassword) {
       const error = "As senhas digitadas não conferem";
-      setError(error);
+      alertError(error);
     } else {
       firebase
         .auth()
@@ -75,7 +84,7 @@ const RegisterForm = () => {
         .catch(function (error) {
           const errorCode = error.code;
           const errorTranslate = showError(errorCode);
-          setError(errorTranslate);
+          alertError(errorTranslate);
         });
     }
   };
@@ -127,7 +136,6 @@ const RegisterForm = () => {
         <option value="kitchen">Cozinheiro(a)</option>
         <option value="hall">Atendente</option>
       </select>
-      <p className={style.error}>{error}</p>
       <Button onClick={submitRegister}>Registrar</Button>
       <Link className={style.link} title="Voltar para login" to="/">
         VOLTAR
