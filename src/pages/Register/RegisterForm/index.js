@@ -3,7 +3,7 @@ import firebase from "../../../utils/firebase";
 import style from "./style.module.css";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import showError from "../../utils/error";
 
 const RegisterForm = () => {
@@ -13,6 +13,7 @@ const RegisterForm = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [occupation, setOccupation] = useState("");
   const [error, setError] = useState("");
+  const history = useHistory();
 
   const changeName = (element) => {
     setName(element.target.value);
@@ -53,13 +54,23 @@ const RegisterForm = () => {
         })
         .then(() => {
           const userUID = firebase.auth().currentUser.uid;
-          firebase.firestore().collection("users").doc(userUID).set({
-            name,
-            email,
-            occupation,
-            userUID,
-          });
-          console.log("foi!!");
+          firebase
+            .firestore()
+            .collection("users")
+            .doc(userUID)
+            .set({
+              name,
+              email,
+              occupation,
+              userUID,
+            })
+            .then((occupation) => {
+              const location =
+                occupation === "kitchen"
+                  ? history.push("/kitchen/inProgress")
+                  : history.push("/hall/new");
+              return location;
+            });
         })
         .catch(function (error) {
           const errorCode = error.code;
