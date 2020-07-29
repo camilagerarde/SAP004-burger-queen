@@ -5,11 +5,11 @@ import showError from "../../utils/error";
 import style from "./style.module.css";
 import { Link, useHistory } from "react-router-dom";
 import firebase from "../../../utils/firebase";
+import Swal from "sweetalert2";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const history = useHistory();
 
   const changeEmail = (element) => {
@@ -20,12 +20,20 @@ const LoginForm = () => {
     setPassword(element.target.value);
   };
 
+  const alertError = (error) => {
+    Swal.fire({
+      text: error,
+      icon: "error",
+      confirmButtonColor: "#334585",
+      width: "25rem",
+    });
+  };
+
   const submitLogin = () => {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((data) => {
-        setError("");
         console.log(data.user.uid);
         firebase
           .firestore()
@@ -43,7 +51,7 @@ const LoginForm = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorTranslate = showError(errorCode);
-        setError(errorTranslate);
+        alertError(errorTranslate);
       });
   };
 
@@ -65,7 +73,6 @@ const LoginForm = () => {
         value={password}
         placeholder="******"
       />
-      <p className={style.error}>{error}</p>
       <Button onClick={submitLogin}>Entrar</Button>
       <Link to="/register" className={style.register} title="Registre-se">
         Não possui conta? Registre-se

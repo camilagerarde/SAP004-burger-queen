@@ -19,13 +19,8 @@
   transition: font-size 80ms;
 }
 
-.register,
-.error {
+.register {
   color: #334585;
-}
-
-.error {
-  font-weight: bold;
 }
 
 .register:hover,
