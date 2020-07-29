@@ -1,9 +1,20 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import ImgLogo from "../ImgLogo";
 import style from "./style.module.css";
 import ButtonOut from "../../components/ButtonOut";
+import firebase from "../../utils/firebase";
+
 
 const NavComponent = (props) => {
+  const history = useHistory();
+
+  const logOut = () =>{
+    firebase.auth().signOut().then(function() {
+      history.push("/");
+    })
+    
+  }
   return (
       <section
         className={style.menu}>
@@ -13,7 +24,7 @@ const NavComponent = (props) => {
               {props.children}
             </ul>
           </nav>
-          <ButtonOut/>
+          <ButtonOut onClick={logOut}/>
       </section>
     );
   };
