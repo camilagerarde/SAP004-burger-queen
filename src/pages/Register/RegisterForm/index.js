@@ -68,7 +68,7 @@ const RegisterForm = () => {
               const location =
                 occupation === "kitchen"
                   ? history.push("/kitchen/inProgress")
-                  : history.push("/hall/new");
+                  : history.push("/hall/newOrder");
               return location;
             });
         })
