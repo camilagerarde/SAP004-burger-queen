@@ -45,7 +45,7 @@ const LoginForm = () => {
             if (userData.occupation === "kitchen") {
               return history.push("/kitchen/inProgress");
             }
-            return history.push("/hall/new");
+            return history.push("/hall/newOrder");
           });
       })
       .catch((error) => {
