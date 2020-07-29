@@ -1,0 +1,21 @@
+.liMenu {
+  text-transform: uppercase;
+}
+
+li {
+    display: inline;
+}
+
+ul li a {
+    padding: 2px 10px;
+    display: inline-block;
+    /* visual do link */
+    color: #334585;
+    text-decoration: none;
+  }
+  
+  ul li a:hover {
+    color: rgb(131, 130, 130);
+    border-bottom: 3px solid #FFFFFF;
+    border-radius: 3px;
+  }
