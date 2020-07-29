@@ -1,0 +1,9 @@
+.imgOut {
+  width: 100%;
+  display: flex;
+}
+
+.figure {
+  width: 5%;
+  display: flex-end;
+}
