@@ -34,7 +34,6 @@ const LoginForm = () => {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((data) => {
-        console.log(data.user.uid);
         firebase
           .firestore()
           .collection("users")
@@ -42,10 +41,11 @@ const LoginForm = () => {
           .get()
           .then((doc) => {
             const userData = doc.data();
-            if (userData.occupation === "kitchen") {
-              return history.push("/kitchen/inProgress");
-            }
-            return history.push("/hall/newOrder");
+            const location =
+            userData.occupation === "kitchen"
+              ? history.push("/kitchen/inProgress")
+              : history.push("/hall/newOrder");
+            return location;
           });
       })
       .catch((error) => {
@@ -73,7 +73,12 @@ const LoginForm = () => {
         value={password}
         placeholder="******"
       />
-      <Button onClick={submitLogin}>Entrar</Button>
+      <Button 
+      onClick={submitLogin}
+      className={style.buttonEnter}
+      >
+        Entrar
+      </Button>
       <Link to="/register" className={style.register} title="Registre-se">
         Não possui conta? Registre-se
       </Link>
