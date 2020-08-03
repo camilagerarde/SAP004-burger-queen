@@ -6,10 +6,12 @@ import firebase from "../../utils/firebase";
 
 const PageHall = () => {
   const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState('breakfast');
 
   useEffect(() => {
     firebase.firestore()
     .collection("menu")
+    .where('category', '==', category)
     .onSnapshot((menuItens) => {
       const itens = [];
       menuItens.forEach((doc) => {
@@ -17,7 +19,7 @@ const PageHall = () => {
       });
       setProducts(itens);
     })
-  }, []); 
+  }, [products, setProducts, category]); 
 
   return (
     <section>
@@ -26,7 +28,8 @@ const PageHall = () => {
         <NavItem to="/hall/ready">Pedidos Prontos</NavItem>
         <NavItem to="/hall/delivered">Pedidos entregues</NavItem>
       </NavComponent>
-      <ProductList 
+      <ProductList
+        onChangeCategory={setCategory}
         products={products}
       />
     </section> 
