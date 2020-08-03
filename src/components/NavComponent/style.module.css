@@ -1,5 +1,5 @@
 .menu {
-  background-color:#f27a5f;
+  background-color: #f27a5f;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -29,4 +29,12 @@ ul li a:hover {
   color: rgb(131, 130, 130);
   border-bottom: 3px solid rgb(56, 180, 228);
   border-radius: 3px;
+}
+
+@media (max-width: 600px) {
+  .menu {
+    flex-wrap: nowrap;
+    height: auto;
+    padding: 8px 0;
+  }
 }
