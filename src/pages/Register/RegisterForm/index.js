@@ -90,7 +90,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <form className={style.container}>
+    <form className={style.container} onSubmit={submitRegister}>
       <Input
         onChange={changeName}
         label="nome"
@@ -136,7 +136,7 @@ const RegisterForm = () => {
         <option value="kitchen">Cozinheiro(a)</option>
         <option value="hall">Atendente</option>
       </select>
-      <Button onClick={submitRegister}>Registrar</Button>
+      <Button type="submit">Registrar</Button>
       <Link className={style.link} title="Voltar para login" to="/">
         VOLTAR
       </Link>
