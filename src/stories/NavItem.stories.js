@@ -1,5 +1,6 @@
 import React from "react";
 import NavItem from "../components/NavItem";
+import {BrowserRouter} from "react-router-dom";
 
 
 export default {
@@ -7,10 +8,12 @@ export default {
   component: NavItem,
 };
 
-export const Default = (props) => (
-  <NavItem>
-    <li>
-      <Link to={props.to}>{props.children}</Link>
-    </li>
-  </NavItem>
+export const Default = () => (
+  <BrowserRouter>
+    <NavItem
+      to="/test"
+    >
+      link
+    </NavItem>
+  </BrowserRouter>
   )

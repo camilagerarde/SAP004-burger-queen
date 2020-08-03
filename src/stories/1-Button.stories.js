@@ -7,26 +7,32 @@ export default {
   component: Button,
 };
 
-export const Default = () => (
+export const Sizes = () => (
   <>
-    <Button onClick={action("clicked")}>default</Button>
-    <Button onClick={action("clicked")} color="salmon">
-      salmon
-    </Button>
-    <Button onClick={action("clicked")} color="green">
-      green
-    </Button>
-    <Button onClick={action("clicked")} color="blue">
-      blue
-    </Button>
-    <Button onClick={action("clicked")} color="darkBlue">
-      darkBlue
-    </Button>
-    <Button onClick={action("clicked")} color="yellow">
-      yellow
+    <Button onClick={action("clicked")}>medium</Button>
+    <Button onClick={action("clicked")} size="small">
+      small
     </Button>
   </>
 );
+
+export const Colors = () => (
+  <>
+    <Button onClick={action("clicked")} color="blue">
+      blue
+    </Button>
+    <Button onClick={action("clicked")} color="lightBlue">
+      lightBlue
+    </Button>
+    <Button onClick={action("clicked")} color="lightOrange">
+      ligthOrange
+    </Button>
+    <Button onClick={action("clicked")} color="lightRed">
+      lightRed
+    </Button>
+  </>
+);
+
 
 export const Disabled = () => (
   <Button onClick={action("clicked")} disabled>
