@@ -1,0 +1,13 @@
+.cardMenu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.buttonMenu {
+  height: 13%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
