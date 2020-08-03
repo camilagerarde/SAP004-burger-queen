@@ -1,0 +1,15 @@
+.container {
+  background-color: #ececec;
+  min-height: 100vh;
+}
+
+.main {
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .main {
+    flex-direction: column;
+    align-items: center;
+  }
+}
