@@ -1,0 +1,47 @@
+.container {
+  align-items: center;
+  background: #f27a5f;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+}
+
+.logo {
+  max-width: 30%;
+}
+
+.box {
+  padding: 3%;
+  color: #fff;
+}
+
+.box h1 {
+  font-size: 80px;
+}
+
+.box h2 {
+  padding: 10px 0;
+}
+
+.link {
+  margin-top: 25px;
+  color: #334585;
+  text-decoration: none;
+  transition: font-size 80ms;
+}
+
+.link:hover,
+.link:active {
+  text-decoration: underline;
+  font-size: 16.5px;
+}
+
+@media (min-width: 600px) {
+  .container {
+    flex-direction: row;
+  }
+  .link {
+    font-size: 18px;
+  }
+}
