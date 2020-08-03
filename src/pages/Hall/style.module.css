@@ -1,0 +1,10 @@
+.categoryMenu {
+    background: #EC3939;
+    color: #fff;
+  }
+  
+  .categoryMenu:hover {
+    background: #F96767;
+    color: #FFF;
+  }
+  
