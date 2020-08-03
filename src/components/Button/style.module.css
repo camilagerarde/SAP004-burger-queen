@@ -1,54 +1,43 @@
 .button {
-  background: #334585;
-  border-radius: 13px;
   font-size: 18px;
-  color: #ffffff;
   padding: 14px 24px;
   border: none;
   text-transform: uppercase;
   width: 80%;
   margin-top: 20px;
 }
-.button:hover {
-  background: #253469;
+
+.big {
+  font-size: 18px;
+  padding: 14px 24px;
+  border-radius: 13px;
 }
 
-.salmon {
-  background-color: #eb7a8a;
+.medium {
+  font-size: 13px;
+  height: 40px;
+  border-radius: 10px;
+  width: 90%;
 }
 
-.salmon:hover {
-  background: #c66573;
+.small {
+  font-size: 10px;
+  width: 40%;
+  border-radius: 10px;
+  padding: 2px 2px;
+  margin: 25px 15px;
+
 }
 
 .blue {
-  background-color: #596fbc;
+  background: #334585;
+  color: #FFF;
 }
 
 .blue:hover {
-  background: #2f4287;
-}
-.green {
-  background-color: #a9bf04;
+  background: #253469;
 }
 
-.green:hover {
-  background: #819300;
-}
-.darkBlue {
-  background-color: #334585;
-}
-
-.darkBlue:hover {
-  background: #1a295e;
-}
-.yellow {
-  background-color: #f4c237;
-}
-
-.yellow:hover {
-  background: #d1a321;
-}
 .button:disabled {
   background-color: #a09e9e;
   cursor: not-allowed;
@@ -70,7 +59,7 @@
 }
 
 .lightOrange:hover {
-  background: #F5CD8F;
+  background: #ffd595;
   color: #334585;
 }
 
@@ -80,6 +69,16 @@
 }
 
 .lightRed:hover {
-  background: #f3aaaa;
+  background: #fc9a9a;
   color: #334585;
+}
+
+.salmon {
+  background: #EC3939;
+  color: #fff;
+}
+
+.salmon:hover {
+  background: #F96767;
+  color: #FFF;
 }
