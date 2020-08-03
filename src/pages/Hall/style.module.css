@@ -1,10 +1,22 @@
+.container {
+  background-color: #ececec;
+  min-height: 100vh;
+}
+
 .categoryMenu {
-    background: #EC3939;
-    color: #fff;
+  background: #ec3939;
+  color: #fff;
+}
+
+.categoryMenu:hover {
+  background: #f96767;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .categoryMenu:hover {
-    background: #F96767;
-    color: #FFF;
-  }
-  
+}
