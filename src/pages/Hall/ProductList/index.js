@@ -30,6 +30,7 @@ const ProductList = (props) => {
         className={style.cardMenu}>
         {props.products.map((prod) => (
           <Product
+            onClick={props.onClick}
             name={prod.name}
             price={prod.price}
             key={prod.name}
