@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useReducer } from "react";
+import { useParams } from "react-router-dom"
 import ProductList from "./ProductList";
 import NavComponent from "../../components/NavComponent";
 import NavItem from "../../components/NavItem";
@@ -8,11 +9,17 @@ import OrderHall from "./OrderHall";
 
 const orderInitialState = {
   name:'',
-  table:'',
+  table: 0,
   products: [],
   total: 0,
   status: 'new',
-  createdAt:null,
+  createdAt: null,
+}
+
+const nextState = {
+  new:'inProgress',
+  inProgress: 'toDelivery',
+  toDelivery: 'ready',
 }
 
 const calculateTotal = (products) =>{
@@ -63,12 +70,22 @@ const orderReducer = (state, action) => {
     case 'changeTable':
       return {
         ...state,
-        table: action.payload.table
+        table: action.payload.table,
       }
     case 'addProduct':
       return addProduct(state, action.payload.product);
     case 'removeProduct':
       return removeProduct(state, action.payload.product);
+    case 'changeStatus': {
+      const newState =  {
+        ...state,
+        status: nextState[state.status],
+      }
+      if (newState.status === 'inProgress'){
+        firebase.firestore().collection("orders").add(newState)
+      }
+      return newState;
+    }
     default:
       throw new Error();
   }
@@ -77,13 +94,23 @@ const orderReducer = (state, action) => {
 const PageHall = () => {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState("breakfast");
+  const [orders, setOrders] = useState([]);
   const [order, orderDispatch] = useReducer(orderReducer, orderInitialState);
+  let { status } = useParams();
+
+  const onChangeStatus = () => {
+    orderDispatch({
+      type:'changeStatus',
+    })
+  }
+
   const addProduct = (product) => {
     orderDispatch({
       type:'addProduct',
       payload: {product }
     })
   }
+
   const removeProduct = (product) => {
     orderDispatch({
       type:'removeProduct',
@@ -91,7 +118,19 @@ const PageHall = () => {
     })
   }
 
-
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection("orders")
+      .where("status", "==", status)
+      .onSnapshot((orderList) => {
+        const itens = [];
+        orderList.forEach((doc) => {
+          itens.push(doc.data());
+        });
+        setOrders(itens);
+      });
+  }, [orders, setOrders, status, firebase]);
 
   useEffect(() => {
     firebase
@@ -105,29 +144,49 @@ const PageHall = () => {
         });
         setProducts(itens);
       });
-  }, [products, setProducts, category]);
+  }, [products, setProducts, category, firebase]);
 
   return (
     <section className={style.container}>
       <NavComponent>
         <NavItem to="/hall/newOrder">Pedidos Novos</NavItem>
-        <NavItem to="/hall/ready">Pedidos Prontos</NavItem>
-        <NavItem to="/hall/delivered">Pedidos entregues</NavItem>
+        <NavItem to="/hall/toDelivery">Aguardando Entrega</NavItem>
+        <NavItem to="/hall/ready">Pedidos entregues</NavItem>
       </NavComponent>
-      <section
-      className={style.cardProductOrder}>
-        <ProductList 
-          onAddProduct={addProduct}
-          onChangeCategory={setCategory} 
-          products={products} 
-        />
-        <OrderHall
-          order={order}
-          dispatch={orderDispatch}
-          onAddProduct={addProduct}
-          onRemoveProduct={removeProduct}
-        />
-      </section>
+      {status === 'newOrder' ?
+        (
+          <section
+            className={style.cardProductOrder}>
+              {status}
+              <ProductList 
+                onAddProduct={addProduct}
+                onChangeCategory={setCategory} 
+                products={products} 
+              />
+              <OrderHall
+                order={order}
+                dispatch={orderDispatch}
+                onAddProduct={addProduct}
+                onRemoveProduct={removeProduct}
+                onChangeStatus={onChangeStatus}
+              />
+            </section>
+        ) : (
+          <div>
+          {orders.map((orderItem) => (
+            <p
+            key={`${orderItem.name} ${orderItem.table} ${orderItem.total}`}
+            >
+              {orderItem.name}
+              {orderItem.table}
+              {orderItem.status}
+              
+            </p>
+          ))}
+          </div>
+        )
+      }
+      
     </section>
   );
 };
