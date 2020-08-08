@@ -6,7 +6,7 @@ import Button from "../../../components/Button";
 import style from  "./style.module.css";
 
 const ProductList = (props) => {
-  return(
+  return (
     <Card>
       <>
         <section
@@ -30,7 +30,7 @@ const ProductList = (props) => {
         className={style.cardMenu}>
         {props.products.map((prod) => (
           <Product
-            onClick={props.onClick}
+            onClick={() => { props.onAddProduct(prod) }}
             name={prod.name}
             price={prod.price}
             key={prod.name}
