@@ -34,7 +34,7 @@ const addProduct = (state, product) => {
   } else{
     state.products[index].count +=1;
   }
-  state.total = calculateTotal(state.product)
+  state.total = calculateTotal(state.products)
   return state;
 }
 
@@ -48,7 +48,7 @@ const removeProduct = (state, product) => {
       state.products[index].count -=1;
     }
   }
-  state.total = calculateTotal(state.product)
+  state.total = calculateTotal(state.products)
   return state;
 }
 
@@ -70,7 +70,7 @@ const orderReducer = (state, action) => {
     case 'removeProduct':
       return removeProduct(state, action.payload.product);
     default:
-      return state
+      throw new Error();
   }
 }
 
@@ -78,6 +78,20 @@ const PageHall = () => {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState("breakfast");
   const [order, orderDispatch] = useReducer(orderReducer, orderInitialState);
+  const addProduct = (product) => {
+    orderDispatch({
+      type:'addProduct',
+      payload: {product }
+    })
+  }
+  const removeProduct = (product) => {
+    orderDispatch({
+      type:'removeProduct',
+      payload: {product }
+    })
+  }
+
+
 
   useEffect(() => {
     firebase
@@ -103,12 +117,15 @@ const PageHall = () => {
       <section
       className={style.cardProductOrder}>
         <ProductList 
+          onAddProduct={addProduct}
           onChangeCategory={setCategory} 
           products={products} 
         />
         <OrderHall
           order={order}
           dispatch={orderDispatch}
+          onAddProduct={addProduct}
+          onRemoveProduct={removeProduct}
         />
       </section>
     </section>
