@@ -21,7 +21,6 @@ const OrderHall = (props) => {
     })
   }
 
-
   return (
     <section
       className={style.card}
@@ -29,7 +28,6 @@ const OrderHall = (props) => {
       <h2>
         Resumo do pedido
       </h2>
-      {props.order.table}
       <Input
         onChange={onChangeName}
         label="atendente"
@@ -61,6 +59,7 @@ const OrderHall = (props) => {
       <Button 
         type="send"
         className={style.buttonSend}
+        onClick={() => props.onChangeStatus()}
       >
         Enviar
       </Button>
