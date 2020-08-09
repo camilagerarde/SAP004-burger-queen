@@ -8,13 +8,13 @@ const OrderItem = (props) => {
     <li>
       <p className={style.itens}>
         {props.name}
-        <Ico onClick={props.onRemove} type="minus" alt="Diminuir quantidade" />
-        {props.count}
-        <Ico onClick={props.onAdd} type="more" alt="Aumentar quantidade" />
         {props.price.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
         })}
+        <Ico onClick={props.onRemove} type="minus" alt="Diminuir quantidade" />
+        {props.count}
+        <Ico onClick={props.onAdd} type="more" alt="Aumentar quantidade" />
         <Ico type="del" alt="Excluir item" />
       </p>
     </li>
