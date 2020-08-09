@@ -40,7 +40,7 @@ const OrderHall = (props) => {
         value={props.order.table}
         border="border"
       />
-      <ul>
+      <table className={style.table}>
         {props.order.products.map((prod) => (
           <OrderItem
             name={prod.name}
@@ -52,7 +52,7 @@ const OrderHall = (props) => {
             onRemove={() => props.onRemoveProduct(prod)}
           />
         ))}
-      </ul>
+      </table>
       <h3>{`Total ${props.order.total.toLocaleString("pt-BR", {
         style: "currency",
         currency: "BRL",

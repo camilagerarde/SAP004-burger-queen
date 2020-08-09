@@ -5,13 +5,15 @@ import style from "./style.module.css";
 
 const OrderItem = (props) => {
   return (
-    <li>
-      <p className={style.itens}>
-        {props.name}
+    <tr className={style.table}>
+      <td className={style.firstCollum}>{props.name}</td>
+      <td className={style.secondCollum}>
         {props.price.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
         })}
+      </td>
+      <td className={style.thirdCollum}>
         <Ico
           onClick={props.onDecrease}
           type="minus"
@@ -20,8 +22,8 @@ const OrderItem = (props) => {
         {props.count}
         <Ico onClick={props.onAdd} type="more" alt="Aumentar quantidade" />
         <Ico onClick={props.onRemove} type="del" alt="Excluir item" />
-      </p>
-    </li>
+      </td>
+    </tr>
   );
 };
 
