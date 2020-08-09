@@ -8,24 +8,9 @@
   justify-content: center;
 }
 
-.categoryMenu {
-  background: #ec3939;
-  color: #fff;
-}
-
-.categoryMenu:hover {
-  background: #f96767;
-  color: #fff;
-}
-
 @media (max-width: 600px) {
-  .container {
-    display: flex;
+  .cardProductOrder {
     flex-direction: column;
     align-items: center;
   }
-}
-
-.cardProductOrder {
-  display: flex;
 }
