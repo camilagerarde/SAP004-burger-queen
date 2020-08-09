@@ -137,6 +137,8 @@ const PageHall = () => {
       .firestore()
       .collection("menu")
       .where("category", "==", category)
+      .orderBy("type", "desc")
+      .orderBy("name", "asc")
       .onSnapshot((menuItens) => {
         const itens = [];
         menuItens.forEach((doc) => {
