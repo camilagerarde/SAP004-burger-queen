@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useReducer } from "react";
 import { useParams } from "react-router-dom";
-import ProductList from "./ProductList";
+import firebase from "../../utils/firebase";
 import NavComponent from "../../components/NavComponent";
 import NavItem from "../../components/NavItem";
-import firebase from "../../utils/firebase";
+import ProductList from "./newOrder/ProductList";
+import OrderHall from "./newOrder/OrderHall";
 import style from "./style.module.css";
-import OrderHall from "./OrderHall";
 
 const orderInitialState = {
   name: "",
@@ -62,6 +62,7 @@ const decreaseProduct = (state, product) => {
 const removeProduct = (state, product) => {
   const index = getProductIndex(state, product);
   state.products.splice(index, 1);
+  state.total = calculateTotal(state.products);
   return state;
 };
 
@@ -91,6 +92,8 @@ const orderReducer = (state, action) => {
       };
       if (newState.status === "inProgress") {
         firebase.firestore().collection("orders").add(newState);
+        // .then(() => (state.order = orderInitialState));
+        // limpar pedido
       } else {
         firebase
           .firestore()
@@ -98,7 +101,7 @@ const orderReducer = (state, action) => {
           .doc(state.id)
           .update({ status: nextState[state.status] });
       }
-      return newState;
+      return state;
     }
     default:
       throw new Error();
