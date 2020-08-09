@@ -12,20 +12,8 @@
   min-height: 70vh;
 }
 
-@media (min-width: 1200px) {
-  .card {
-    width: 25%;
-  }
-}
-
-@media (max-width: 600px) {
-  .card {
-    width: 80%;
-  }
-}
-
 h2 {
-  color: #F34163;
+  color: #f34163;
   text-transform: uppercase;
   padding: 15px;
 }
@@ -34,4 +22,16 @@ h3 {
   color: #858585;
   text-transform: uppercase;
   padding: 15px;
+}
+
+@media (min-width: 1200px) {
+  .card {
+    width: 35%;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 80%;
+  }
 }
