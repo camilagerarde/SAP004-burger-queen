@@ -12,6 +12,10 @@
   min-height: 70vh;
 }
 
+.table {
+  margin: 10px 0;
+}
+
 h2 {
   color: #f34163;
   text-transform: uppercase;
@@ -21,7 +25,7 @@ h2 {
 h3 {
   color: #858585;
   text-transform: uppercase;
-  padding: 15px;
+  padding: 10px;
 }
 
 @media (min-width: 1200px) {
@@ -33,5 +37,8 @@ h3 {
 @media (max-width: 600px) {
   .card {
     width: 80%;
+  }
+  h2 {
+    font-size: 20px;
   }
 }
