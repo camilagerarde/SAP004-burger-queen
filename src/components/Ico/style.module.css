@@ -6,6 +6,7 @@
   width: 20px;
   cursor: pointer;
   transition: ease opacity 80ms;
+  margin: 0 5px;
 }
 
 .figure:hover {
