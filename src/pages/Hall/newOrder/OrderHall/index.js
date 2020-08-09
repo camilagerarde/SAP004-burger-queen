@@ -1,8 +1,9 @@
 import React from "react";
+import Input from "../../../../components/Input";
+import Button from "../../../../components/Button";
+import OrderItem from "../../../../components/OrderItem";
+import Swal from "sweetalert2";
 import style from "./style.module.css";
-import Input from "../../../components/Input";
-import Button from "../../../components/Button";
-import OrderItem from "../../../components/OrderItem";
 
 const OrderHall = (props) => {
   const onChangeName = (event) => {
@@ -19,6 +20,18 @@ const OrderHall = (props) => {
       type: "changeTable",
       payload: { table },
     });
+  };
+
+  const verifyOrder = () => {
+    if (!props.order.name || !props.order.table || !props.order.total) {
+      Swal.fire({
+        text: "Preencha todos os campos do pedido!",
+        confirmButtonColor: "#334585",
+        width: "20rem",
+      });
+    } else {
+      props.onChangeStatus();
+    }
   };
 
   return (
@@ -60,7 +73,7 @@ const OrderHall = (props) => {
       <Button
         type="send"
         className={style.buttonSend}
-        onClick={() => props.onChangeStatus()}
+        onClick={() => verifyOrder()}
       >
         Enviar
       </Button>
