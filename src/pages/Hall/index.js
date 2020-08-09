@@ -65,12 +65,6 @@ const removeProduct = (state, product) => {
   return state;
 };
 
-// const removeProduct = (product) => {
-//   const delProduct = state.products.filter((elem) => elem !== product);
-//   state.products([...delProduct]);
-//   calculateTotal(state.products);
-// };
-
 const orderReducer = (state, action) => {
   switch (action.type) {
     case "changeName":
@@ -97,6 +91,12 @@ const orderReducer = (state, action) => {
       };
       if (newState.status === "inProgress") {
         firebase.firestore().collection("orders").add(newState);
+      } else {
+        firebase
+          .firestore()
+          .collection("orders")
+          .doc(state.id)
+          .update({ status: nextState[state.status] });
       }
       return newState;
     }
@@ -147,7 +147,7 @@ const PageHall = () => {
       .onSnapshot((orderList) => {
         const itens = [];
         orderList.forEach((doc) => {
-          itens.push(doc.data());
+          itens.push({ id: doc.id, ...doc.data() });
         });
         setOrders(itens);
       });
@@ -196,7 +196,8 @@ const PageHall = () => {
       ) : (
         <div>
           {orders.map((orderItem) => (
-            <p key={`${orderItem.name} ${orderItem.table} ${orderItem.total}`}>
+            <p key={orderItem.id}>
+              {orderItem.id}
               {orderItem.name}
               {orderItem.table}
               {orderItem.status}
