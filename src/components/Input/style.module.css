@@ -36,3 +36,9 @@
   flex-wrap: wrap;
   width: 80%;
 }
+
+@media (max-width: 600px) {
+  .label {
+    font-size: 15px;
+  }
+}

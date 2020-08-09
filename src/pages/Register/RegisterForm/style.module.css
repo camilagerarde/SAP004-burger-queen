@@ -14,9 +14,7 @@
   margin-top: 10px;
   text-transform: uppercase;
   padding-left: 10%;
-}
 
-.label {
   color: #334585;
 }
 
@@ -60,5 +58,11 @@
 @media (min-width: 1200px) {
   .select {
     margin: 10px 0 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .label {
+    font-size: 15px;
   }
 }
