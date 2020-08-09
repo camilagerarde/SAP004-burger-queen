@@ -1,0 +1,4 @@
+.itens {
+  display: flex;
+  text-transform: capitalize;
+}
