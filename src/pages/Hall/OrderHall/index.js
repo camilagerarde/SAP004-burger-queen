@@ -48,6 +48,7 @@ const OrderHall = (props) => {
             count={prod.count}
             key={prod.name}
             onAdd={() => props.onAddProduct(prod)}
+            onDecrease={() => props.onDecreaseProduct(prod)}
             onRemove={() => props.onRemoveProduct(prod)}
           />
         ))}

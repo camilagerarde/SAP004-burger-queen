@@ -45,7 +45,7 @@ const addProduct = (state, product) => {
   return state;
 };
 
-const removeProduct = (state, product) => {
+const decreaseProduct = (state, product) => {
   const index = getProductIndex(state, product);
   if (index !== -1) {
     const count = state.products[index].count;
@@ -58,6 +58,18 @@ const removeProduct = (state, product) => {
   state.total = calculateTotal(state.products);
   return state;
 };
+
+const removeProduct = (state, product) => {
+  const index = getProductIndex(state, product);
+  state.products.splice(index, 1);
+  return state;
+};
+
+// const removeProduct = (product) => {
+//   const delProduct = state.products.filter((elem) => elem !== product);
+//   state.products([...delProduct]);
+//   calculateTotal(state.products);
+// };
 
 const orderReducer = (state, action) => {
   switch (action.type) {
@@ -73,6 +85,8 @@ const orderReducer = (state, action) => {
       };
     case "addProduct":
       return addProduct(state, action.payload.product);
+    case "decreaseProduct":
+      return decreaseProduct(state, action.payload.product);
     case "removeProduct":
       return removeProduct(state, action.payload.product);
     case "changeStatus": {
@@ -107,6 +121,13 @@ const PageHall = () => {
   const addProduct = (product) => {
     orderDispatch({
       type: "addProduct",
+      payload: { product },
+    });
+  };
+
+  const decreaseProduct = (product) => {
+    orderDispatch({
+      type: "decreaseProduct",
       payload: { product },
     });
   };
@@ -167,6 +188,7 @@ const PageHall = () => {
             order={order}
             dispatch={orderDispatch}
             onAddProduct={addProduct}
+            onDecreaseProduct={decreaseProduct}
             onRemoveProduct={removeProduct}
             onChangeStatus={onChangeStatus}
           />

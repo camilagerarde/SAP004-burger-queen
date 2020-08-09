@@ -12,10 +12,14 @@ const OrderItem = (props) => {
           style: "currency",
           currency: "BRL",
         })}
-        <Ico onClick={props.onRemove} type="minus" alt="Diminuir quantidade" />
+        <Ico
+          onClick={props.onDecrease}
+          type="minus"
+          alt="Diminuir quantidade"
+        />
         {props.count}
         <Ico onClick={props.onAdd} type="more" alt="Aumentar quantidade" />
-        <Ico type="del" alt="Excluir item" />
+        <Ico onClick={props.onRemove} type="del" alt="Excluir item" />
       </p>
     </li>
   );
