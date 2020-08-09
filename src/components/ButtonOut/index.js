@@ -5,11 +5,12 @@ import style from "./style.module.css";
 const LogoOut = (props) => {
   return (
     <figure className={style.figure}>
-      <img 
-      src={Out} 
-      className={style.imgOut} 
-      alt="logo"
-      onClick={props.onClick}/>
+      <img
+        src={Out}
+        className={style.imgOut}
+        alt="Sair da sessão"
+        onClick={props.onClick}
+      />
     </figure>
   );
 };
