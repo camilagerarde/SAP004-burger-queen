@@ -79,6 +79,7 @@ const orderReducer = (state, action) => {
       const newState = {
         ...state,
         status: nextState[state.status],
+        createdAt: new Date().getTime(),
       };
       if (newState.status === "inProgress") {
         firebase.firestore().collection("orders").add(newState);
@@ -129,7 +130,7 @@ const PageHall = () => {
         });
         setOrders(itens);
       });
-  }, [orders, setOrders, status, firebase]);
+  }, [orders, setOrders, status]); //firebase
 
   useEffect(() => {
     firebase
@@ -143,7 +144,7 @@ const PageHall = () => {
         });
         setProducts(itens);
       });
-  }, [products, setProducts, category, firebase]);
+  }, [products, setProducts, category]); //firebase
 
   return (
     <section className={style.container}>
