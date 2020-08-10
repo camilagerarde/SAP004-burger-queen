@@ -1,95 +1,113 @@
 import React, { useState, useEffect, useReducer } from "react";
-import { useParams } from "react-router-dom"
-import ProductList from "./ProductList";
+import { useParams } from "react-router-dom";
+import firebase from "../../utils/firebase";
 import NavComponent from "../../components/NavComponent";
 import NavItem from "../../components/NavItem";
-import firebase from "../../utils/firebase";
+import ProductList from "./newOrder/ProductList";
+import OrderHall from "./newOrder/OrderHall";
+import ToDelivery from "./ToDelivery";
 import style from "./style.module.css";
-import OrderHall from "./OrderHall";
 
 const orderInitialState = {
-  name:'',
+  name: "",
   table: 0,
   products: [],
   total: 0,
-  status: 'new',
+  status: "new",
   createdAt: null,
-}
+};
 
 const nextState = {
-  new:'inProgress',
-  inProgress: 'toDelivery',
-  toDelivery: 'ready',
-}
+  new: "inProgress",
+  inProgress: "toDelivery",
+  toDelivery: "ready",
+};
 
-const calculateTotal = (products) =>{
+const calculateTotal = (products) => {
   return products.reduce((accumulator, item) => {
-    return accumulator+(item.price*item.count)
-  }, 0)
-}
+    return accumulator + item.price * item.count;
+  }, 0);
+};
 
 const getProductIndex = (state, product) => {
-  return  state.products.findIndex((item) => {
-    return item.name === product.name
-  })
-}
+  return state.products.findIndex((item) => {
+    return item.name === product.name;
+  });
+};
 
 const addProduct = (state, product) => {
-  const index = getProductIndex(state, product)
-  if(index===-1){
-    state.products.push({...product, count: 1})
-  } else{
-    state.products[index].count +=1;
+  const index = getProductIndex(state, product);
+  if (index === -1) {
+    state.products.push({ ...product, count: 1 });
+  } else {
+    state.products[index].count += 1;
   }
-  state.total = calculateTotal(state.products)
+  state.total = calculateTotal(state.products);
   return state;
-}
+};
 
-const removeProduct = (state, product) => {
-  const index = getProductIndex(state, product)
-  if(index!==-1){
-    const count = state.products[index].count
-    if (count === 1){
-      state.products.splice(index,1)
+const decreaseProduct = (state, product) => {
+  const index = getProductIndex(state, product);
+  if (index !== -1) {
+    const count = state.products[index].count;
+    if (count === 1) {
+      state.products.splice(index, 1);
     } else {
-      state.products[index].count -=1;
+      state.products[index].count -= 1;
     }
   }
-  state.total = calculateTotal(state.products)
+  state.total = calculateTotal(state.products);
   return state;
-}
+};
 
+const removeProduct = (state, product) => {
+  const index = getProductIndex(state, product);
+  state.products.splice(index, 1);
+  state.total = calculateTotal(state.products);
+  return state;
+};
 
 const orderReducer = (state, action) => {
   switch (action.type) {
-    case 'changeName':
+    case "changeName":
       return {
         ...state,
         name: action.payload.name,
-      }
-    case 'changeTable':
+      };
+    case "changeTable":
       return {
         ...state,
         table: action.payload.table,
-      }
-    case 'addProduct':
+      };
+    case "addProduct":
       return addProduct(state, action.payload.product);
-    case 'removeProduct':
+    case "decreaseProduct":
+      return decreaseProduct(state, action.payload.product);
+    case "removeProduct":
       return removeProduct(state, action.payload.product);
-    case 'changeStatus': {
-      const newState =  {
+    case "changeStatus": {
+      const newState = {
         ...state,
         status: nextState[state.status],
+        createdAt: new Date().getTime(),
+      };
+      if (newState.status === "inProgress") {
+        firebase.firestore().collection("orders").add(newState);
+        // .then(() => (state.order = orderInitialState));
+        // limpar pedido
+      } else {
+        firebase
+          .firestore()
+          .collection("orders")
+          .doc(state.id)
+          .update({ status: nextState[state.status] });
       }
-      if (newState.status === 'inProgress'){
-        firebase.firestore().collection("orders").add(newState)
-      }
-      return newState;
+      return state;
     }
     default:
       throw new Error();
   }
-}
+};
 
 const PageHall = () => {
   const [products, setProducts] = useState([]);
@@ -100,23 +118,30 @@ const PageHall = () => {
 
   const onChangeStatus = () => {
     orderDispatch({
-      type:'changeStatus',
-    })
-  }
+      type: "changeStatus",
+    });
+  };
 
   const addProduct = (product) => {
     orderDispatch({
-      type:'addProduct',
-      payload: {product }
-    })
-  }
+      type: "addProduct",
+      payload: { product },
+    });
+  };
+
+  const decreaseProduct = (product) => {
+    orderDispatch({
+      type: "decreaseProduct",
+      payload: { product },
+    });
+  };
 
   const removeProduct = (product) => {
     orderDispatch({
-      type:'removeProduct',
-      payload: {product }
-    })
-  }
+      type: "removeProduct",
+      payload: { product },
+    });
+  };
 
   useEffect(() => {
     firebase
@@ -126,17 +151,19 @@ const PageHall = () => {
       .onSnapshot((orderList) => {
         const itens = [];
         orderList.forEach((doc) => {
-          itens.push(doc.data());
+          itens.push({ id: doc.id, ...doc.data() });
         });
         setOrders(itens);
       });
-  }, [orders, setOrders, status, firebase]);
+  }, [orders, setOrders, status]); //firebase
 
   useEffect(() => {
     firebase
       .firestore()
       .collection("menu")
       .where("category", "==", category)
+      .orderBy("type", "desc")
+      .orderBy("name", "asc")
       .onSnapshot((menuItens) => {
         const itens = [];
         menuItens.forEach((doc) => {
@@ -144,7 +171,7 @@ const PageHall = () => {
         });
         setProducts(itens);
       });
-  }, [products, setProducts, category, firebase]);
+  }, [products, setProducts, category]); //firebase
 
   return (
     <section className={style.container}>
@@ -153,40 +180,26 @@ const PageHall = () => {
         <NavItem to="/hall/toDelivery">Aguardando Entrega</NavItem>
         <NavItem to="/hall/ready">Pedidos entregues</NavItem>
       </NavComponent>
-      {status === 'newOrder' ?
-        (
-          <section
-            className={style.cardProductOrder}>
-              {status}
-              <ProductList 
-                onAddProduct={addProduct}
-                onChangeCategory={setCategory} 
-                products={products} 
-              />
-              <OrderHall
-                order={order}
-                dispatch={orderDispatch}
-                onAddProduct={addProduct}
-                onRemoveProduct={removeProduct}
-                onChangeStatus={onChangeStatus}
-              />
-            </section>
-        ) : (
-          <div>
-          {orders.map((orderItem) => (
-            <p
-            key={`${orderItem.name} ${orderItem.table} ${orderItem.total}`}
-            >
-              {orderItem.name}
-              {orderItem.table}
-              {orderItem.status}
-              
-            </p>
-          ))}
-          </div>
-        )
-      }
-      
+      {status}
+      {status === "newOrder" ? (
+        <section className={style.cardProductOrder}>
+          <ProductList
+            onAddProduct={addProduct}
+            onChangeCategory={setCategory}
+            products={products}
+          />
+          <OrderHall
+            order={order}
+            dispatch={orderDispatch}
+            onAddProduct={addProduct}
+            onDecreaseProduct={decreaseProduct}
+            onRemoveProduct={removeProduct}
+            onChangeStatus={onChangeStatus}
+          />
+        </section>
+      ) : (
+        <ToDelivery orders={orders} />
+      )}
     </section>
   );
 };

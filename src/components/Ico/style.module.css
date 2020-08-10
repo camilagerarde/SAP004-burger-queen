@@ -1,0 +1,19 @@
+.ico {
+  width: 20px;
+}
+
+.figure {
+  cursor: pointer;
+  transition: ease opacity 80ms;
+  margin: 0 5px;
+}
+
+.figure:hover {
+  opacity: 0.8;
+}
+
+@media (min-width: 1200px) {
+}
+
+@media (max-width: 600px) {
+}

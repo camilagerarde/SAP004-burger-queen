@@ -14,9 +14,7 @@
   margin-top: 10px;
   text-transform: uppercase;
   padding-left: 10%;
-}
 
-.label {
   color: #334585;
 }
 
@@ -28,6 +26,7 @@
   margin: 14px 0 35px 0;
   padding: 8px;
   width: 80%;
+  height: 40px;
 }
 
 .select:focus {
@@ -59,5 +58,11 @@
 @media (min-width: 1200px) {
   .select {
     margin: 10px 0 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .label {
+    font-size: 15px;
   }
 }

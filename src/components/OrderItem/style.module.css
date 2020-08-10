@@ -1,0 +1,35 @@
+.table {
+  display: flex;
+  text-transform: capitalize;
+  width: 100%;
+  align-items: center;
+  border-bottom: 1px solid #b8b6b6;
+  flex-wrap: wrap;
+}
+
+.table td {
+  display: flex;
+  font-size: 18px;
+  color: #494949;
+  padding: 3px 0 2px 0;
+}
+
+.firstCollum {
+  width: 45%;
+}
+
+.secondCollum {
+  width: 25%;
+  text-align: left;
+}
+
+.thirdCollum {
+  width: 30%;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .table td {
+    font-size: 15px;
+  }
+}
