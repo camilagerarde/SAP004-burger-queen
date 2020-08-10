@@ -3,15 +3,30 @@ import PropTypes from "prop-types";
 import Card from "../../../components/Card";
 import Button from "../../../components/Button";
 import style from "./style.module.css";
+import firebase from "../../../utils/firebase";
+
+const nextState = {
+  new: "inProgress",
+  inProgress: "toDelivery",
+  toDelivery: "ready",
+};
 
 const orderCards = (props) => {
+
+  const changeStatus = (order) => {
+    const status = nextState[order.status]
+    firebase.firestore().collection('orders').doc(order.id).update({
+      status,
+    });
+  }
+
   return (
     <section className={style.container}>
       {props.orders.map((orderItem) => (
         <Card>
           <section key={orderItem.id}>
             <p>{orderItem.id} </p>
-            <p> {orderItem.name} </p>
+            <p>{orderItem.name} </p>
             <p>{orderItem.table} </p>
             <p>{orderItem.status} </p>
             <p>
@@ -21,7 +36,11 @@ const orderCards = (props) => {
               })}{" "}
             </p>
           </section>
-          <Button color="lightBlue" size="medium">
+          <Button 
+            onClick={() => changeStatus(orderItem)}
+            color="lightBlue" 
+            size="medium"
+          >
             Entregue
           </Button>
         </Card>
