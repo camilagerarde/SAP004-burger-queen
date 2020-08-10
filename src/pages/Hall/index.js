@@ -5,6 +5,7 @@ import NavComponent from "../../components/NavComponent";
 import NavItem from "../../components/NavItem";
 import ProductList from "./newOrder/ProductList";
 import OrderHall from "./newOrder/OrderHall";
+import ToDelivery from "./ToDelivery";
 import style from "./style.module.css";
 
 const orderInitialState = {
@@ -197,16 +198,7 @@ const PageHall = () => {
           />
         </section>
       ) : (
-        <div>
-          {orders.map((orderItem) => (
-            <p key={orderItem.id}>
-              {orderItem.id}
-              {orderItem.name}
-              {orderItem.table}
-              {orderItem.status}
-            </p>
-          ))}
-        </div>
+        <ToDelivery orders={orders} />
       )}
     </section>
   );
