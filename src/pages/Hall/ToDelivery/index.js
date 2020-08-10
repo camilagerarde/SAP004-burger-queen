@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Card from "../../../components/Card";
+import CardOrder from "../../../components/CardOrder";
 import Button from "../../../components/Button";
 import style from "./style.module.css";
-import firebase from "../../../utils/firebase";
+import firebase from "../../../utils/firebase"
 
 const nextState = {
   new: "inProgress",
@@ -23,19 +23,23 @@ const orderCards = (props) => {
   return (
     <section className={style.container}>
       {props.orders.map((orderItem) => (
-        <Card>
-          <section key={orderItem.id}>
-            <p>{orderItem.id} </p>
-            <p>{orderItem.name} </p>
-            <p>{orderItem.table} </p>
-            <p>{orderItem.status} </p>
-            <p>
-              {orderItem.total.toLocaleString("pt-BR", {
+        <CardOrder>
+          <ul key={orderItem.id}>
+            <li>Atendente: {orderItem.name}</li>{''}
+            <li>Mesa:{orderItem.table}</li>{''}
+            <li>Pedido</li>{''}
+            {orderItem.products.map((prod) => (
+              <ul key={prod.name}>
+                <li>{prod.count} - {prod.name} </li>{''}
+              </ul>
+            ))}   
+            <li>TOTAL</li>{''}     
+            <li>{orderItem.total.toLocaleString("pt-BR", {
                 style: "currency",
                 currency: "BRL",
               })}{" "}
-            </p>
-          </section>
+            </li>
+          </ul>
           <Button 
             onClick={() => changeStatus(orderItem)}
             color="lightBlue" 
@@ -43,7 +47,7 @@ const orderCards = (props) => {
           >
             Entregue
           </Button>
-        </Card>
+        </CardOrder>
       ))}
     </section>
   );
@@ -55,8 +59,14 @@ orderCards.propTypes = {
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       status: PropTypes.string.isRequired,
-      table: PropTypes.number.isRequired,
+      table: PropTypes.string.isRequired,
       total: PropTypes.number.isRequired,
+      products:  PropTypes.arrayOf(
+        PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        count: PropTypes.number.isRequired,
+        })
+      )      
     })
   ),
 };
