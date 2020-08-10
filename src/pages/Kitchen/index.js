@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import firebase from "../../utils/firebase";
 import NavComponent from "../../components/NavComponent";
 import NavItem from "../../components/NavItem";
 import style from "./style.module.css";
-import Order from "./Order";
+import ToDelivery from "../Hall/ToDelivery";
 
 function Kitchen() {
+  const [orders, setOrders] = useState([]);
+  let { status } = useParams();
+
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection("orders")
+      .where("status", "==", status)
+      .onSnapshot((orderList) => {
+        const itens = [];
+        orderList.forEach((doc) => {
+          itens.push({ id: doc.id, ...doc.data() });
+        });
+        setOrders(itens);
+      });
+  }, [orders, setOrders, status]); //firebase
+
   return (
     <section className={style.container}>
       <NavComponent>
@@ -12,16 +31,7 @@ function Kitchen() {
         <NavItem to="/kitchen/ready">Pedidos entregues</NavItem>
       </NavComponent>{" "}
       <div className={style.main}>
-        <Order>
-          {" "}
-          <h3>Pedido 01</h3>
-          <p> Em construção</p>
-        </Order>
-        <Order>
-          {" "}
-          <h3>Pedido 02</h3>
-          <p> Em construção</p>
-        </Order>
+        <ToDelivery orders={orders}/>
       </div>
     </section>
   );
