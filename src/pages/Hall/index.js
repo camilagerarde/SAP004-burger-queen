@@ -93,6 +93,14 @@ const orderReducer = (state, action) => {
       };
       if (newState.status === "inProgress") {
         firebase.firestore().collection("orders").add(newState);
+        return {
+          name: "",
+          table: 0,
+          products: [],
+          total: 0,
+          status: "new",
+          createdAt: null,
+        }
         // .then(() => (state.order = orderInitialState));
         // limpar pedido
       } else {
@@ -104,6 +112,7 @@ const orderReducer = (state, action) => {
       }
       return state;
     }
+    
     default:
       throw new Error();
   }

@@ -1,0 +1,22 @@
+.card {
+    width: 45%;
+    background: #fcf7f7;
+    border: 4px solid #bfbebe;
+    box-sizing: border-box;
+    border-radius: 21px;
+    margin: 20px;
+    min-height: 45vh;
+  }
+  
+  @media (min-width: 1200px) {
+    .card {
+      width: 35%;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .card {
+      width: 80%;
+    }
+  }
+  
