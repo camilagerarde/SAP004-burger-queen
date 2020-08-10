@@ -54,27 +54,32 @@ const OrderHall = (props) => {
         border="border"
       />
       <table className={style.table}>
-        {props.order.products.map((prod) => (
-          <OrderItem
-            name={prod.name}
-            price={prod.price}
-            count={prod.count}
-            key={prod.name}
-            onAdd={() => props.onAddProduct(prod)}
-            onDecrease={() => props.onDecreaseProduct(prod)}
-            onRemove={() => props.onRemoveProduct(prod)}
-          />
-        ))}
+        <thead>
+          <tr>
+            <th className={style.firstCollum}> Item </th>
+            <th className={style.secondCollum}> Valor </th>
+            <th className={style.thirdCollum}> Quant. </th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.order.products.map((prod) => (
+            <OrderItem
+              name={prod.name}
+              price={prod.price}
+              count={prod.count}
+              key={prod.name}
+              onAdd={() => props.onAddProduct(prod)}
+              onDecrease={() => props.onDecreaseProduct(prod)}
+              onRemove={() => props.onRemoveProduct(prod)}
+            />
+          ))}
+        </tbody>
       </table>
       <h3>{`Total ${props.order.total.toLocaleString("pt-BR", {
         style: "currency",
         currency: "BRL",
       })}`}</h3>
-      <Button
-        type="send"
-        className={style.buttonSend}
-        onClick={() => verifyOrder()}
-      >
+      <Button className={style.buttonSend} onClick={() => verifyOrder()}>
         Enviar
       </Button>
       {props.children}

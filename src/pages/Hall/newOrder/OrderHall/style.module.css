@@ -14,6 +14,35 @@
 
 .table {
   margin: 10px 0;
+  width: 80%;
+}
+
+tr {
+  display: flex;
+  text-transform: capitalize;
+  align-items: center;
+  border-bottom: 1px solid #b8b6b6;
+  flex-wrap: wrap;
+}
+
+tr th {
+  display: flex;
+  font-size: 18px;
+  color: #494949;
+  padding: 3px 0 2px 0;
+}
+
+.firstCollum {
+  width: 45%;
+}
+
+.secondCollum {
+  width: 25%;
+  text-align: left;
+}
+
+.thirdCollum {
+  width: 30%;
 }
 
 h2 {
@@ -40,5 +69,8 @@ h3 {
   }
   h2 {
     font-size: 20px;
+  }
+  tr td {
+    font-size: 15px;
   }
 }
