@@ -3,14 +3,14 @@
   text-transform: capitalize;
   width: 100%;
   align-items: center;
-  border-bottom: 1px solid #b8b6b6;
+  border-bottom: 2px solid #b8b6b6;
   flex-wrap: wrap;
 }
 
 .table td {
   display: flex;
-  font-size: 18px;
-  color: #494949;
+  font-size: 14px;
+  color: #777777;
   padding: 3px 0 2px 0;
 }
 

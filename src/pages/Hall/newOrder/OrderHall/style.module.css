@@ -21,14 +21,14 @@ tr {
   display: flex;
   text-transform: capitalize;
   align-items: center;
-  border-bottom: 1px solid #b8b6b6;
+  border-bottom: 3px solid #f34163;
   flex-wrap: wrap;
 }
 
 tr th {
   display: flex;
   font-size: 18px;
-  color: #494949;
+  color: #f34163;
   padding: 3px 0 2px 0;
 }
 
@@ -49,6 +49,7 @@ h2 {
   color: #f34163;
   text-transform: uppercase;
   padding: 15px;
+  font-size: 18px;
 }
 
 h3 {
