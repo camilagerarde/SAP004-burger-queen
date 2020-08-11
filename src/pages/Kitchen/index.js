@@ -15,6 +15,7 @@ function Kitchen() {
       .firestore()
       .collection("orders")
       .where("status", "==", status)
+      .orderBy("createdAt", "desc")
       .onSnapshot((orderList) => {
         const itens = [];
         orderList.forEach((doc) => {
@@ -31,7 +32,7 @@ function Kitchen() {
         <NavItem to="/kitchen/ready">Pedidos entregues</NavItem>
       </NavComponent>{" "}
       <div className={style.main}>
-        <ToDelivery orders={orders}/>
+        <ToDelivery orders={orders} status={status} />
       </div>
     </section>
   );
