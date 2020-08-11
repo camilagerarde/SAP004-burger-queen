@@ -3,12 +3,15 @@
 }
 
 .figure {
-  cursor: pointer;
-  transition: ease opacity 80ms;
   margin: 0 5px;
 }
 
-.figure:hover {
+.yes {
+  cursor: pointer;
+  transition: ease opacity 80ms;
+}
+
+.yes:hover {
   opacity: 0.8;
 }
 

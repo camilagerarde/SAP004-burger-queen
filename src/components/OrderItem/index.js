@@ -18,10 +18,21 @@ const OrderItem = (props) => {
           onClick={props.onDecrease}
           type="minus"
           alt="Diminuir quantidade"
+          pointer="yes"
         />
         {props.count}
-        <Ico onClick={props.onAdd} type="more" alt="Aumentar quantidade" />
-        <Ico onClick={props.onRemove} type="del" alt="Excluir item" />
+        <Ico
+          onClick={props.onAdd}
+          type="more"
+          alt="Aumentar quantidade"
+          pointer="yes"
+        />
+        <Ico
+          onClick={props.onRemove}
+          type="del"
+          alt="Excluir item"
+          pointer="yes"
+        />
       </td>
     </tr>
   );
