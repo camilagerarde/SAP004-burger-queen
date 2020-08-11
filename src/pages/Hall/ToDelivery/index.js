@@ -11,6 +11,14 @@ const nextState = {
   toDelivery: "ready",
 };
 
+
+const formatCurrency = (value) =>{
+  return value.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  })
+
+}
 const orderCards = (props) => {
 
   const changeStatus = (order) => {
@@ -23,23 +31,25 @@ const orderCards = (props) => {
   return (
     <section className={style.container}>
       {props.orders.map((orderItem) => (
-        <CardOrder>
-          <ul key={orderItem.id}>
-            <li>Atendente: {orderItem.name}</li>{''}
-            <li>Mesa:{orderItem.table}</li>{''}
-            <li>Pedido</li>{''}
+        <CardOrder
+          key={orderItem.id}
+        >
+          <section key={orderItem.id}>
+            <p>Atendente: {orderItem.name}</p>
+            <p>Mesa:{orderItem.table}</p>
+            <h3>Pedido</h3>
             {orderItem.products.map((prod) => (
-              <ul key={prod.name}>
-                <li>{prod.count} - {prod.name} </li>{''}
+              <ul 
+              key={prod.name}
+              className={style.orderItem}
+              >
+                <li>{prod.count} - {prod.name} </li>
               </ul>
             ))}   
-            <li>TOTAL</li>{''}     
-            <li>{orderItem.total.toLocaleString("pt-BR", {
-                style: "currency",
-                currency: "BRL",
-              })}{" "}
-            </li>
-          </ul>
+            <h3>TOTAL:
+            {formatCurrency(orderItem.total)}
+            </h3> 
+          </section>
           <Button 
             onClick={() => changeStatus(orderItem)}
             color="lightBlue" 
