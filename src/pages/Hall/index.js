@@ -189,7 +189,6 @@ const PageHall = () => {
         <NavItem to="/hall/toDelivery">Aguardando Entrega</NavItem>
         <NavItem to="/hall/ready">Pedidos entregues</NavItem>
       </NavComponent>
-      {status}
       {status === "newOrder" ? (
         <section className={style.cardProductOrder}>
           <ProductList
