@@ -1,3 +1,25 @@
 .container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+}
+
+.orderItem {
+  color: #858585;
+  text-transform: uppercase;
+  padding: 8px;
+  border-bottom: 1px solid #818181;
+}
+
+.total {
+  color: #334585;
+  text-transform: uppercase;
+  padding: 8px;
+}
+
+p {
+  color: #f27a5f;
+  padding: 5px;
 }
