@@ -7,6 +7,7 @@ import ProductList from "./newOrder/ProductList";
 import OrderHall from "./newOrder/OrderHall";
 import ToDelivery from "./ToDelivery";
 import style from "./style.module.css";
+import Swal from "sweetalert2";
 
 const orderInitialState = {
   name: "",
@@ -91,28 +92,38 @@ const orderReducer = (state, action) => {
         status: nextState[state.status],
         createdAt: new Date().getTime(),
       };
-      if (newState.status === "inProgress") {
-        firebase.firestore().collection("orders").add(newState);
-        return {
-          name: "",
-          table: 0,
-          products: [],
-          total: 0,
-          status: "new",
-          createdAt: null,
-        }
-        // .then(() => (state.order = orderInitialState));
-        // limpar pedido
-      } else {
-        firebase
-          .firestore()
-          .collection("orders")
-          .doc(state.id)
-          .update({ status: nextState[state.status] });
-      }
-      return state;
+
+      firebase
+        .firestore()
+        .collection("orders")
+        .add(newState)
+        .then(() => {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+          Toast.fire({
+            icon: "success",
+            title: "Pedido enviado!",
+          });
+        });
+      return {
+        name: "",
+        table: 0,
+        products: [],
+        total: 0,
+        status: "new",
+        createdAt: null,
+      };
     }
-    
+
     default:
       throw new Error();
   }
@@ -157,6 +168,7 @@ const PageHall = () => {
       .firestore()
       .collection("orders")
       .where("status", "==", status)
+      .orderBy("createdAt", "desc")
       .onSnapshot((orderList) => {
         const itens = [];
         orderList.forEach((doc) => {
@@ -206,7 +218,7 @@ const PageHall = () => {
           />
         </section>
       ) : (
-        <ToDelivery orders={orders} />
+        <ToDelivery orders={orders} status={status} />
       )}
     </section>
   );
