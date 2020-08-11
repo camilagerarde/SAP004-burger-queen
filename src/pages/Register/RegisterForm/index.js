@@ -74,6 +74,20 @@ const RegisterForm = () => {
               userUID,
             })
             .then((occupation) => {
+              const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                onOpen: (toast) => {
+                  toast.addEventListener("mouseenter", Swal.stopTimer);
+                },
+              });
+              Toast.fire({
+                icon: "success",
+                title: "Cadastro feito com sucesso!",
+              });
               const location =
                 occupation === "kitchen"
                   ? history.push("/kitchen/inProgress")
