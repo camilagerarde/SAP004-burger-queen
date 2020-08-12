@@ -40,6 +40,14 @@ const CardOrder = (props) => {
     }
   };
 
+  const showName = (prod) => {
+    if (!prod.burger) {
+      return `${prod.count} - ${prod.name}`;
+    } else {
+      return `${prod.count} - ${prod.name} (${prod.burger}, adicional: ${prod.optional})`;
+    }
+  };
+
   return (
     <section
       className={style.card}
@@ -53,7 +61,7 @@ const CardOrder = (props) => {
           key={prod.name}
           className={style.orderItem}
           >
-            <li>{prod.count} - {prod.name} </li>
+            <li>{showName(prod)}</li>
           </ul>
         ))}   
         <h3>TOTAL:
