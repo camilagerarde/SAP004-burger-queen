@@ -40,8 +40,8 @@ const orderCards = (props) => {
           toast: true,
           position: "top-end",
           showConfirmButton: false,
-          timerProgressBar: true,
           timer: 1000,
+          timerProgressBar: true,
           onOpen: (toast) => {
             toast.addEventListener("mouseenter", Swal.stopTimer);
           },
@@ -75,19 +75,28 @@ const orderCards = (props) => {
     }
   };
 
+  const showName = (prod) => {
+    if (!prod.burger) {
+      return `${prod.count} - ${prod.name}`;
+    } else {
+      return `${prod.count} - ${prod.name} (${prod.burger}, adicional: ${prod.optional})`;
+    }
+  };
+
   return (
     <section className={style.container}>
       {props.orders.map((orderItem) => (
         <CardOrder key={orderItem.id}>
-          <section key={orderItem.id}>
+          <section>
             <p>Atendente: {orderItem.name}</p>
             <p>Mesa:{orderItem.table}</p>
             <h3>Pedido</h3>
             {orderItem.products.map((prod) => (
-              <ul key={prod.name} className={style.orderItem}>
-                <li>
-                  {prod.count} - {prod.name}{" "}
-                </li>
+              <ul
+                key={`${prod.name}${prod.burger}${prod.optional}`}
+                className={style.orderItem}
+              >
+                <li>{showName(prod)}</li>
               </ul>
             ))}
             <h3>

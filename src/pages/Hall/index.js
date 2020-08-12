@@ -32,13 +32,98 @@ const calculateTotal = (products) => {
 
 const getProductIndex = (state, product) => {
   return state.products.findIndex((item) => {
-    return item.name === product.name;
+    if (!product.burger) {
+      return item.name === product.name && item.burger === product.burger;
+    } else {
+      return item.name === product.name;
+    }
   });
 };
 
+async function addBurger(state, product) {
+  const inputBurger = new Promise((resolve) => {
+    resolve({
+      bovino: "Bovino",
+      frango: "Frango",
+      vegetariano: "Vegetariano",
+    });
+  });
+  const { value: burger } = await Swal.fire({
+    title: "Selecione o hambúrguer",
+    input: "radio",
+    inputOptions: inputBurger,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    inputValidator: (value) => {
+      if (!value) {
+        return "Você precisa escolher uma opção!";
+      }
+    },
+  });
+
+  const inputOptional = new Promise((resolve) => {
+    resolve({
+      ovo: "Ovo",
+      queijo: "Queijo",
+      nenhum: "Nenhum",
+    });
+  });
+  const { value: optional } = await Swal.fire({
+    title: "Selecione o opcional",
+    input: "radio",
+    inputOptions: inputOptional,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    inputValidator: (value) => {
+      if (!value) {
+        return "Você precisa escolher uma opção!";
+      }
+    },
+  });
+
+  const index = state.products.findIndex((item) => {
+    return (
+      item.name === product.name &&
+      item.burger === burger &&
+      item.optional === optional
+    );
+  });
+
+  if (index === -1) {
+    if (optional === "nenhum") {
+      state.products.push({
+        ...product,
+        count: 1,
+        burger: burger,
+        optional: optional,
+      });
+    } else {
+      state.products.push({
+        ...product,
+        count: 1,
+        burger: burger,
+        optional: optional,
+        price: product.price + 1,
+      });
+    }
+  } else {
+    state.products[index].count += 1;
+  }
+
+  state.total = calculateTotal(state.products);
+  return state;
+}
+
 const addProduct = (state, product) => {
   const index = getProductIndex(state, product);
-  if (index === -1) {
+  if (
+    product.name === "hambúrguer simples" ||
+    product.name === "hambúrguer duplo"
+  ) {
+    addBurger(state, product);
+  } else if (index === -1) {
     state.products.push({ ...product, count: 1 });
   } else {
     state.products[index].count += 1;
@@ -188,7 +273,7 @@ const PageHall = () => {
       .onSnapshot((menuItens) => {
         const itens = [];
         menuItens.forEach((doc) => {
-          itens.push(doc.data());
+          itens.push({ id: doc.id, ...doc.data() });
         });
         setProducts(itens);
       });

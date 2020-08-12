@@ -65,9 +65,11 @@ const OrderHall = (props) => {
           {props.order.products.map((prod) => (
             <OrderItem
               name={prod.name}
+              burger={prod.burger}
+              optional={prod.optional}
               price={prod.price}
               count={prod.count}
-              key={prod.name}
+              key={`${prod.name}${prod.burger}${prod.optional}`}
               onAdd={() => props.onAddProduct(prod)}
               onDecrease={() => props.onDecreaseProduct(prod)}
               onRemove={() => props.onRemoveProduct(prod)}
@@ -88,22 +90,3 @@ const OrderHall = (props) => {
 };
 
 export default OrderHall;
-
-// const removeProduct = (product) => {
-//   const delProduct = order.filter((elem) => elem !== product);
-//   setOrder([...delProduct]);
-//   calculateTotal(product, "remove");
-// };
-
-// .toLocaleString("pt-BR", {
-//   style: "currency",
-//   currency: "BRL",
-// })
-
-// <Ico
-//                     onClick={() => decreaseProduct(prod)}
-//                     type="minus"
-//                     alt="Diminuir quantidade"
-//                   />
-
-// new Date().getTime(),

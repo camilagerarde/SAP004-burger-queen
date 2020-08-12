@@ -86,7 +86,7 @@ const RegisterForm = () => {
               });
               Toast.fire({
                 icon: "success",
-                title: "Cadastro feito com sucesso!",
+                title: "Cadastro realizado com sucesso!",
               });
               const location =
                 occupation === "kitchen"

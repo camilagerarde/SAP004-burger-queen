@@ -4,9 +4,17 @@ import Ico from "../Ico";
 import style from "./style.module.css";
 
 const OrderItem = (props) => {
+  const showName = () => {
+    if (!props.burger) {
+      return props.name;
+    } else {
+      return `${props.name} ${props.burger}, adicional: ${props.optional}`;
+    }
+  };
+
   return (
     <tr className={style.table}>
-      <td className={style.firstCollum}>{props.name}</td>
+      <td className={style.firstCollum}>{showName()}</td>
       <td className={style.secondCollum}>
         {props.price.toLocaleString("pt-BR", {
           style: "currency",
