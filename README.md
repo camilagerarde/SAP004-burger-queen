@@ -16,7 +16,7 @@ Senha - 123456
 
 ## Índice
 
-- [1. Introdução](#1-introdução)
+- [1. Introdução](#1-introdução-hamburger)
 - [2. Resumo do projeto](#2-resumo-do-projeto)
 - [3. Criação e desenvolvimento.](#3-criação-e-desenvolvimento)
 - [4. Considerações gerais](#4-considerações-gerais)
@@ -27,7 +27,7 @@ Senha - 123456
 
 ---
 
-## 1. Introdução 🍔
+## 1. Introdução :hamburger:
 
 Interface _web_ para processamento e envio dos pedidos de uma hamburgueria, de forma ordenada e eficiente.  
 Desenvolvido com React, preferencialmente para _tablets_, mas também responsiva para _mobile_ e _web_.
