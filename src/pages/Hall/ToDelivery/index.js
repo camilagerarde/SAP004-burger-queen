@@ -13,14 +13,17 @@ const nextState = {
 
 const orderCards = (props) => {
   const changeStatus = (order) => {
-    const status = nextState[order.status];
+    const data = {
+      status: nextState[order.status]
+    }
+    if (data.status === "ready") {
+      data.deliveredAt = new Date().getTime()
+    }
     firebase
       .firestore()
       .collection("orders")
       .doc(order.id)
-      .update({
-        status,
-      })
+      .update(data)
       .then(() => {
         const Toast = Swal.mixin({
           toast: true,
