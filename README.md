@@ -30,18 +30,19 @@ Senha - 123456
 ## 1. Introdução 🍔
 
 Interface _web_ para processamento e envio dos pedidos de uma hamburgueria, de forma ordenada e eficiente.  
-Desenvolvido com React, preferencialmente para _tablets_, mas também responsiva para qualquer aparelho e web.
+Desenvolvido com React, preferencialmente para _tablets_, mas também responsiva para _mobile_ e _web_.
 
 ## 2. Resumo do projeto
 
-Um projeto 100% por demanda.  
-Um pequeno restaurante de hambúrgueres, que está crescendo, necessita uma interface em que se possa realizar pedidos utilizando um _tablet_, e enviá-los para a cozinha para que sejam preparados de forma ordenada e eficiente.
+Um pequeno restaurante, que está crescendo, necessita uma interface em que se possa realizar pedidos utilizando um _tablet_, e enviá-los para a cozinha para que sejam preparados de forma ordenada e eficiente.
 
 A interface deve mostrar os dois menus (café da manhã e restante do dia), cada um com todos os seus _produtos_.  
 O usuário deve poder escolher que _produtos_
-adicionar e a interface deve mostrar o _resumo do pedido_ com o custo total.
+adicionar e a interface deve mostrar o _resumo do pedido_ com o custo total em tempo real.
 
 ## 3. Criação e desenvolvimento.
+
+### Sobre o nome
 
 > **Comics** é um meio utilizado para expressar narrativas ou outras ideias por meio de imagens, geralmente combinadas com texto. Desenhos animados e outras formas de ilustração são os meios mais comuns de criação de comics.
 
@@ -61,7 +62,7 @@ O _Product Owner_ nos apresentou o _backlog_, e o desenvolvimento foi realizado 
 
 ### Login e Registro
 
-Possível realizar o registro dos funcionários de acordo com sua função, definindo as páginas que ele terá acesso.
+É possível realizar o registro dos funcionários de acordo com sua função, definindo as páginas que ele terá acesso.
 
 <img src="./readme/login.png" height="500">
 <img src="./readme/registro.png" height="500">
@@ -86,8 +87,6 @@ Histórico de pedidos que já foram finalizados.
 <img src="./readme/historico.png" height="500">
 
 ## 6. Instalação e ferramentas utilizadas :star:
-
-O aplicativo deve usar scripts `npm-scripts` e ter `start`, `build` e `deploy`, que são responsáveis por iniciar, empacotar e implantar o aplicativo, respectivamente.
 
 ### Instalação
 
@@ -117,6 +116,9 @@ http://localhost:3000
 
 ### Para a visualização do Storybook
 
+> Storybook é uma ferramenta _open source_ para o desenvolvimento de componentes de IU isoladamente para React, Vue, Angular e muito mais.  
+Isso torna a criação de interfaces de usuário impressionantes organizada e eficiente.
+
 - Execute o comando no terminal
 
 ```sh
@@ -126,20 +128,23 @@ npm run storybook
 - E visualize no seu navegador com o link:
 
 ```sh
-http://localhost:3000
+http://localhost:9009
 ```
+
+### Ferramentas utilizadas
 
 - [React](https://reactjs.org/)
 - [React Hooks](https://reactjs.org/docs/hooks-intro.html)
 - [React Router](https://reactrouter.com/web/guides/quick-start)
 - [CSS Modules](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/)
 - [Babel](https://babeljs.io/)
-- [webpack](https://webpack.js.org/)
+- [Webpack](https://webpack.js.org/)
 - [Firebase](https://firebase.google.com/)
 - [Storybook](https://storybook.js.org/)
 - [Prop-types](https://www.npmjs.com/package/prop-types)
 - [Sweet Alert2](https://sweetalert2.github.io/)
 - [Dayjs](https://www.npmjs.com/package/dayjs)
+- [Eslint](https://www.npmjs.com/package/eslint-plugin-react)
 
 ## 7. Implementações futuras
 
@@ -151,3 +156,5 @@ http://localhost:3000
 ## 8. Autoria
 
 Este projeto foi feito com 🖤 por [Camila Cunha](https://github.com/camilagerarde) e [Sofia Simas](https://github.com/SofiaSimas) com base no projeto da [Laboratoria](https://github.com/Laboratoria).
+
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
