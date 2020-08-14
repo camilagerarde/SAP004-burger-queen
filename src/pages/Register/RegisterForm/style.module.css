@@ -9,12 +9,11 @@
 
 .label {
   align-self: flex-start;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1.2em;
   margin-top: 10px;
   text-transform: uppercase;
   padding-left: 10%;
-
   color: #334585;
 }
 

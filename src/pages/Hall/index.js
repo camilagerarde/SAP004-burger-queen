@@ -16,6 +16,7 @@ const orderInitialState = {
   total: 0,
   status: "new",
   createdAt: null,
+  deliveredAt: null,
 };
 
 const nextState = {
