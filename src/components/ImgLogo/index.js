@@ -5,9 +5,9 @@ import style from "./style.module.css";
 const LogoReduzida = () => {
   return (
     <>
-    <figure>
-      <img src={Logo} className={style.img} alt="logo" />
-    </figure>
+      <figure>
+        <img src={Logo} className={style.img} alt="logo" />
+      </figure>
     </>
   );
 };

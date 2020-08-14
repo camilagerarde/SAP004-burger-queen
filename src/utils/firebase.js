@@ -1,9 +1,7 @@
-//import firebase from "firebase";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCOENT9Bhl9-gWolsXXXPY5_4bZPb2dPEA",
   authDomain: "comic-burger.firebaseapp.com",
@@ -13,7 +11,6 @@ const firebaseConfig = {
   messagingSenderId: "710948905821",
   appId: "1:710948905821:web:1e914e92593ffdaa847eb4",
 };
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 export default firebase;

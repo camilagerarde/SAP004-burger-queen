@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 import style from "./style.module.css";
 
 const Button = (props) => {
@@ -19,11 +19,17 @@ const Button = (props) => {
 Button.propTypes = {
   onClick: PropTypes.func,
   id: PropTypes.string,
-  color: PropTypes.oneOf(["blue", "lightBlue", "lightOrange", "lightRed", "salmon"]),
+  color: PropTypes.oneOf([
+    "blue",
+    "lightBlue",
+    "lightOrange",
+    "lightRed",
+    "salmon",
+  ]),
   disabled: PropTypes.bool,
   size: PropTypes.oneOf(["small", "medium", "big"]),
-  type: PropTypes.oneOf(["button", "submit"])
-}
+  type: PropTypes.oneOf(["button", "submit"]),
+};
 
 Button.defaultProps = {
   size: "big",
@@ -32,6 +38,5 @@ Button.defaultProps = {
   onClick: null,
   disabled: false,
   type: "button",
-}
+};
 export default Button;
-

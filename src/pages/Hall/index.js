@@ -262,7 +262,7 @@ const PageHall = () => {
         });
         setOrders(itens);
       });
-  }, [orders, setOrders, status]); //firebase
+  }, [orders, setOrders, status]);
 
   useEffect(() => {
     firebase
@@ -278,7 +278,7 @@ const PageHall = () => {
         });
         setProducts(itens);
       });
-  }, [products, setProducts, category]); //firebase
+  }, [products, setProducts, category]);
 
   return (
     <section className={style.container}>

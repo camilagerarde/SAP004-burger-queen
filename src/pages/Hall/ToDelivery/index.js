@@ -14,10 +14,10 @@ const nextState = {
 const orderCards = (props) => {
   const changeStatus = (order) => {
     const data = {
-      status: nextState[order.status]
-    }
+      status: nextState[order.status],
+    };
     if (data.status === "ready") {
-      data.deliveredAt = new Date().getTime()
+      data.deliveredAt = new Date().getTime();
     }
     firebase
       .firestore()
@@ -45,7 +45,8 @@ const orderCards = (props) => {
   return (
     <section className={style.container}>
       {props.orders.map((orderItem) => (
-        <CardOrder key={orderItem.id}
+        <CardOrder
+          key={orderItem.id}
           order={orderItem}
           onChangeStatus={changeStatus}
         />

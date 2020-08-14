@@ -7,12 +7,12 @@ Para acessar a aplicação [clique Aqui](https://comic-burger.web.app/) 👈
 > Login para teste
 
 > **Salão**  
-Login - salao@salao.com  
-Senha - 123456
+> Login - salao@salao.com  
+> Senha - 123456
 
 > **Cozinha**  
-Login - cozinha@cozinha.com  
-Senha - 123456
+> Login - cozinha@cozinha.com  
+> Senha - 123456
 
 ## Índice
 
@@ -117,7 +117,7 @@ http://localhost:3000
 ### Para a visualização do Storybook
 
 > Storybook é uma ferramenta _open source_ para o desenvolvimento de componentes de IU isoladamente para React, Vue, Angular e muito mais.  
-Isso torna a criação de interfaces de usuário impressionantes organizada e eficiente.
+> Isso torna a criação de interfaces de usuário impressionantes organizada e eficiente.
 
 - Execute o comando no terminal
 

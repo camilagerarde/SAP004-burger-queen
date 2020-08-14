@@ -23,7 +23,7 @@ function Kitchen() {
         });
         setOrders(itens);
       });
-  }, [orders, setOrders, status]); //firebase
+  }, [orders, setOrders, status]);
 
   return (
     <section className={style.container}>

@@ -30,7 +30,7 @@ const LoginForm = () => {
   };
 
   const submitLogin = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -43,9 +43,9 @@ const LoginForm = () => {
           .then((doc) => {
             const userData = doc.data();
             const location =
-            userData.occupation === "kitchen"
-              ? history.push("/kitchen/inProgress")
-              : history.push("/hall/newOrder");
+              userData.occupation === "kitchen"
+                ? history.push("/kitchen/inProgress")
+                : history.push("/hall/newOrder");
             return location;
           });
       })
@@ -57,10 +57,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form 
-      className={style.container}
-      onSubmit={submitLogin}
-    >
+    <form className={style.container} onSubmit={submitLogin}>
       <Input
         onChange={changeEmail}
         label="email"
@@ -77,10 +74,7 @@ const LoginForm = () => {
         value={password}
         placeholder="******"
       />
-      <Button 
-        type="submit"
-        className={style.buttonEnter}
-      >
+      <Button type="submit" className={style.buttonEnter}>
         Entrar
       </Button>
       <Link to="/register" className={style.register} title="Registre-se">
