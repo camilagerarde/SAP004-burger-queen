@@ -4,24 +4,24 @@
 
 Para acessar a aplicação [clique Aqui](https://comic-burger.web.app/) 👈
 
-Login para teste
+> Login para teste
 
-**Salão**  
+> **Salão**  
 Login - salao@salao.com  
 Senha - 123456
 
-**Cozinha**  
+> **Cozinha**  
 Login - cozinha@cozinha.com  
 Senha - 123456
 
 ## Índice
 
-- [1. Introdução](#1-introdução-🍔)
+- [1. Introdução](#1-introdução)
 - [2. Resumo do projeto](#2-resumo-do-projeto)
-- [3. Criação e desenvolvimento.](#3-criação-e-desenvolvimento.)
+- [3. Criação e desenvolvimento.](#3-criação-e-desenvolvimento)
 - [4. Considerações gerais](#4-considerações-gerais)
 - [5. Interface](#5-interface)
-- [6. Instalação e ferramentas utilizadas](#6-instalação-e-ferramentas-utilizadas-⭐)
+- [6. Instalação e ferramentas utilizadas](#6-instalação-e-ferramentas-utilizadas-star)
 - [7. Implementações futuras](#7-implementações-futuras)
 - [8. Autoria](#8-autoria)
 
@@ -85,7 +85,7 @@ Histórico de pedidos que já foram finalizados.
 
 <img src="./readme/historico.png" height="500">
 
-## 6. Instalação e ferramentas utilizadas ⭐
+## 6. Instalação e ferramentas utilizadas :star:
 
 O aplicativo deve usar scripts `npm-scripts` e ter `start`, `build` e `deploy`, que são responsáveis por iniciar, empacotar e implantar o aplicativo, respectivamente.
 
