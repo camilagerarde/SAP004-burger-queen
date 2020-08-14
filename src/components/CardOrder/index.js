@@ -2,8 +2,7 @@ import React from "react";
 import style from "./style.module.css";
 import Button from "../../components/Button";
 import Ico from "../../components/Ico";
-import FormatHour from "../FormatHour";
-
+import Timer from "../Timer"
 
 const changeNameButton = {
   inProgress: "Pronto",
@@ -53,9 +52,9 @@ const CardOrder = (props) => {
       className={style.card}
     >
       <section key={props.order.id}>
-        <p>Atendente: {props.order.name}</p>
-        <p>Mesa:{props.order.table}</p>
-        <h3>Pedido</h3>
+        <p>Resumo do pedido</p>
+        <h3>Atendente: {props.order.name}</h3>
+        <h3>Mesa: {props.order.table}</h3>
         {props.order.products.map((prod) => (
           <ul 
           key={prod.name}
@@ -63,13 +62,20 @@ const CardOrder = (props) => {
           >
             <li>{showName(prod)}</li>
           </ul>
-        ))}   
-        <h3>TOTAL:
+        ))}  
+        < p className={style.total}
+        >Total:
         {formatCurrency(props.order.total)}
-        </h3> 
-          <FormatHour title={"PEDIDO"} time={props.order.timestamp_ordered} />
+        </p> 
+        <Timer 
+        createdAt={props.order.createdAt}
+        deliveredAt={props.order.deliveredAt}
+        status={props.order.status}
+        className={style.timer}
+        />
+
       </section>
-      {SomeClass}
+
       {nameButton()}
     </section>
   )
