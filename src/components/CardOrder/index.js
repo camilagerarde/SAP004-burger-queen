@@ -2,7 +2,7 @@ import React from "react";
 import style from "./style.module.css";
 import Button from "../../components/Button";
 import Ico from "../../components/Ico";
-import Timer from "../Timer"
+import Timer from "../Timer";
 
 const changeNameButton = {
   inProgress: "Pronto",
@@ -48,37 +48,34 @@ const CardOrder = (props) => {
   };
 
   return (
-    <section
-      className={style.card}
-    >
+    <section className={style.card}>
       <section key={props.order.id}>
         <p>Resumo do pedido</p>
         <h3>Atendente: {props.order.name}</h3>
         <h3>Mesa: {props.order.table}</h3>
         {props.order.products.map((prod) => (
-          <ul 
-          key={prod.name}
-          className={style.orderItem}
+          <ul
+            key={`${prod.name}${prod.optional}${prod.burger}`}
+            className={style.orderItem}
           >
             <li>{showName(prod)}</li>
           </ul>
-        ))}  
-        < p className={style.total}
-        >Total:
-        {formatCurrency(props.order.total)}
-        </p> 
-        <Timer 
-        createdAt={props.order.createdAt}
-        deliveredAt={props.order.deliveredAt}
-        status={props.order.status}
-        className={style.timer}
+        ))}
+        <p className={style.total}>
+          Total:
+          {formatCurrency(props.order.total)}
+        </p>
+        <Timer
+          createdAt={props.order.createdAt}
+          deliveredAt={props.order.deliveredAt}
+          status={props.order.status}
+          className={style.timer}
         />
-
       </section>
 
       {nameButton()}
     </section>
-  )
-}
+  );
+};
 
 export default CardOrder;
