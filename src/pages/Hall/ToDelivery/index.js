@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import CardOrder from "../../../components/CardOrder";
-import Button from "../../../components/Button";
-import Ico from "../../../components/Ico";
 import style from "./style.module.css";
 import firebase from "../../../utils/firebase";
 import Swal from "sweetalert2";
@@ -11,18 +9,6 @@ const nextState = {
   new: "inProgress",
   inProgress: "toDelivery",
   toDelivery: "ready",
-};
-
-const changeNameButton = {
-  inProgress: "Pronto",
-  toDelivery: "Entregar",
-};
-
-const formatCurrency = (value) => {
-  return value.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  });
 };
 
 const orderCards = (props) => {
@@ -53,59 +39,13 @@ const orderCards = (props) => {
       });
   };
 
-  const nameButton = (orderItem) => {
-    let status = props.status;
-    if (status === "ready") {
-      return (
-        <span className={style.done}>
-          <p>Pedido finalizado</p>
-          <Ico type="check" alt="Pedido finalizado" />
-        </span>
-      );
-    } else {
-      return (
-        <Button
-          onClick={() => changeStatus(orderItem)}
-          color="lightBlue"
-          size="medium"
-        >
-          {changeNameButton[props.status]}
-        </Button>
-      );
-    }
-  };
-
-  const showName = (prod) => {
-    if (!prod.burger) {
-      return `${prod.count} - ${prod.name}`;
-    } else {
-      return `${prod.count} - ${prod.name} (${prod.burger}, adicional: ${prod.optional})`;
-    }
-  };
-
   return (
     <section className={style.container}>
       {props.orders.map((orderItem) => (
-        <CardOrder key={orderItem.id}>
-          <section>
-            <p>Atendente: {orderItem.name}</p>
-            <p>Mesa:{orderItem.table}</p>
-            <h3>Pedido</h3>
-            {orderItem.products.map((prod) => (
-              <ul
-                key={`${prod.name}${prod.burger}${prod.optional}`}
-                className={style.orderItem}
-              >
-                <li>{showName(prod)}</li>
-              </ul>
-            ))}
-            <h3>
-              TOTAL:
-              {formatCurrency(orderItem.total)}
-            </h3>
-          </section>
-          {nameButton(orderItem)}
-        </CardOrder>
+        <CardOrder key={orderItem.id}
+          order={orderItem}
+          onChangeStatus={changeStatus}
+        />
       ))}
     </section>
   );
