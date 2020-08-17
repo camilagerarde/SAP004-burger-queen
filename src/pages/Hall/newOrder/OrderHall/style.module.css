@@ -14,7 +14,7 @@
 
 .table {
   margin: 10px 0;
-  width: 80%;
+  width: 90%;
 }
 
 tr {
@@ -29,7 +29,7 @@ tr th {
   display: flex;
   font-size: 16px;
   color: #f34163;
-  padding: 2px 0 2px 0;
+  padding: 3px 0 2px 0;
 }
 
 .firstCollum {

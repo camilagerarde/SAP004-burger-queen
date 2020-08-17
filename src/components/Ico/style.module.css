@@ -1,9 +1,10 @@
 .ico {
-  width: 16px;
+  width: 20px;
+  margin-right: 8px;
 }
 
 .figure {
-  margin: 0 5px;
+  margin-left: 6px;
 }
 
 .yes {
