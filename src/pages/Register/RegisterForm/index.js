@@ -73,7 +73,7 @@ const RegisterForm = () => {
               occupation,
               userUID,
             })
-            .then((occupation) => {
+            .then(() => {
               const Toast = Swal.mixin({
                 toast: true,
                 position: "top-end",
