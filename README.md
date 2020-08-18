@@ -2,7 +2,7 @@
 
 <img src="./src/components/LogoPresentation/logo.png" width="300">
 
-Para acessar a aplicação [clique Aqui](https://comic-burger.web.app/) 👈
+Para acessar a aplicação [clique aqui](https://comic-burger.web.app/) 👈
 
 > Login para teste
 
@@ -64,8 +64,7 @@ O _Product Owner_ nos apresentou o _backlog_, e o desenvolvimento foi realizado 
 
 É possível realizar o registro dos funcionários de acordo com sua função, definindo as páginas que ele terá acesso.
 
-<img src="./readme/login.png" height="500">
-<img src="./readme/registro.png" height="500">
+<img src="./readme/login.png" height="500"> <img src="./readme/registro.png" height="500">
 
 ### Salão
 
