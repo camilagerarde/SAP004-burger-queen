@@ -133,7 +133,7 @@ http://localhost:9009
 ### Ferramentas utilizadas
 
 - [React](https://reactjs.org/)
-- [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+- [React Hooks](https://pt-br.reactjs.org/docs/hooks-intro.html)
 - [React Router](https://reactrouter.com/web/guides/quick-start)
 - [CSS Modules](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/)
 - [Babel](https://babeljs.io/)
