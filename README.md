@@ -30,7 +30,7 @@ Para acessar a aplicação [clique aqui](https://comic-burger.web.app/) 👈
 ## 1. Introdução :hamburger:
 
 Interface _web_ para processamento e envio dos pedidos de uma hamburgueria, de forma ordenada e eficiente.  
-Desenvolvido com React, preferencialmente para _tablets_, mas também responsiva para _mobile_ e _web_.
+Desenvolvido com React, preferencialmente para _tablets_, mas também responsivo para _mobile_ e _web_.
 
 ## 2. Resumo do projeto
 
