@@ -1,38 +1,28 @@
-# Comic Burger
+# <p align='center'><img src="./src/components/LogoPresentation/logo.png" alt="Comic Burger" width="300"></p>
 
-<img src="./src/components/LogoPresentation/logo.png" width="300">
-
-Para acessar a aplicação [clique aqui](https://comic-burger.web.app/) 👈
+#### Para acessar a aplicação [clique aqui](https://comic-burger.web.app/) :computer: 
 
 > Login para teste
+```
+Salão  
+Login - salao@salao.com  
+Senha - 123456
 
-> **Salão**  
-> Login - salao@salao.com  
-> Senha - 123456
+Cozinha
+Login - cozinha@cozinha.com  
+Senha - 123456 
+```
 
-> **Cozinha**  
-> Login - cozinha@cozinha.com  
-> Senha - 123456
-
-## Índice
-
-- [1. Introdução](#1-introdução-hamburger)
-- [2. Resumo do projeto](#2-resumo-do-projeto)
-- [3. Criação e desenvolvimento.](#3-criação-e-desenvolvimento)
-- [4. Considerações gerais](#4-considerações-gerais)
-- [5. Interface](#5-interface)
-- [6. Instalação e ferramentas utilizadas](#6-instalação-e-ferramentas-utilizadas-star)
-- [7. Implementações futuras](#7-implementações-futuras)
-- [8. Autoria](#8-autoria)
+[Introdução](#introdução-hamburger) | [Sobre a projeto](#sobre-a-projeto) | [Criação e desenvolvimento](#criação-e-desenvolvimento) | [Considerações gerais](#considerações-gerais) | [Estrutura e funcionalidades](#estrutura-e-funcionalidades) | [Instalação e execução](#instalação-e-execução-octocat) | [Tecnologias e bibliotecas utilizadas](#tecnologias-e-bibliotecas-utilizadas-star) | [Implementações futuras](#implementações-futuras) 
 
 ---
 
-## 1. Introdução :hamburger:
+## Introdução :hamburger:
 
 Interface _web_ para processamento e envio dos pedidos de uma hamburgueria, de forma ordenada e eficiente.  
 Desenvolvido com React, preferencialmente para _tablets_, mas também responsivo para _mobile_ e _web_.
 
-## 2. Resumo do projeto
+## Sobre a projeto
 
 Um pequeno restaurante, que está crescendo, necessita uma interface em que se possa realizar pedidos utilizando um _tablet_, e enviá-los para a cozinha para que sejam preparados de forma ordenada e eficiente.
 
@@ -40,7 +30,7 @@ A interface deve mostrar os dois menus (café da manhã e restante do dia), cada
 O usuário deve poder escolher que _produtos_
 adicionar e a interface deve mostrar o _resumo do pedido_ com o custo total em tempo real.
 
-## 3. Criação e desenvolvimento.
+## Criação e desenvolvimento.
 
 ### Sobre o nome
 
@@ -50,7 +40,7 @@ adicionar e a interface deve mostrar o _resumo do pedido_ com o custo total em t
 
 <img src="./readme/comicburger.png" width="400">
 
-## 4. Considerações gerais
+## Considerações gerais
 
 A lógica do projeto foi implementada em JavaScript (ES6 +) e [React](https://reactjs.org/), e incluí o conceito de estado da tela, e como cada mudança no estado reflete na interface.
 
@@ -58,7 +48,7 @@ A aplicação é uma _Single Page App_, responsiva para _web_, _tablets_ e _mobi
 
 O _Product Owner_ nos apresentou o _backlog_, e o desenvolvimento foi realizado por meio de Histórias de Usuário, com critérios de aceitação e definição de pronto.
 
-## 5. Interface
+## Estrutura e funcionalidades
 
 ### Login e Registro
 
@@ -85,14 +75,12 @@ Histórico de pedidos que já foram finalizados.
 
 <img src="./readme/historico.png" height="500">
 
-## 6. Instalação e ferramentas utilizadas :star:
+## Instalação e execução :octocat:
 
-### Instalação
-
-- [Clone](https://help.github.com/articles/cloning-a-repository/) o projeto na sua máquina executando o seguinte comando no seu terminal:
+- Clone o projeto na sua máquina executando o seguinte comando no seu terminal:
 
 ```sh
-git clone (link-do-repositório)
+git clone https://github.com/camilagerarde/SAP004-burger-queen
 ```
 
 - Instale as dependências do projeto com o comando:
@@ -130,7 +118,7 @@ npm run storybook
 http://localhost:9009
 ```
 
-### Ferramentas utilizadas
+## Tecnologias e bibliotecas utilizadas :star:
 
 - [React](https://reactjs.org/)
 - [React Hooks](https://pt-br.reactjs.org/docs/hooks-intro.html)
@@ -145,15 +133,13 @@ http://localhost:9009
 - [Dayjs](https://www.npmjs.com/package/dayjs)
 - [Eslint](https://www.npmjs.com/package/eslint-plugin-react)
 
-## 7. Implementações futuras
+## Implementações futuras
 
 - Aprimoramento do timer.
 - Filtros no histórico de pedidos.
 - Alerta para pedidos pendentes e prontos.
 - Testes.
 
-## 8. Autoria
-
-Este projeto foi feito com 🖤 por [Camila Cunha](https://github.com/camilagerarde) e [Sofia Simas](https://github.com/SofiaSimas) com base no projeto da [Laboratoria](https://github.com/Laboratoria).
+**Projeto realizado por [Camila Cunha](https://github.com/camilagerarde) e [Sofia Simas](https://github.com/SofiaSimas) para o Bootcamp da [Laboratória](https://github.com/Laboratoria).**
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
