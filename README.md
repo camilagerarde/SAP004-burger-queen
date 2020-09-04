@@ -2,8 +2,9 @@
 
 #### Para acessar a aplicação [clique aqui](https://comic-burger.web.app/) :computer: 
 
-> Login para teste
 ```
+Login para teste
+
 Salão  
 Login - salao@salao.com  
 Senha - 123456
@@ -13,7 +14,7 @@ Login - cozinha@cozinha.com
 Senha - 123456 
 ```
 
-[Introdução](#introdução-hamburger) | [Sobre a projeto](#sobre-a-projeto) | [Criação e desenvolvimento](#criação-e-desenvolvimento) | [Considerações gerais](#considerações-gerais) | [Estrutura e funcionalidades](#estrutura-e-funcionalidades) | [Instalação e execução](#instalação-e-execução-octocat) | [Tecnologias e bibliotecas utilizadas](#tecnologias-e-bibliotecas-utilizadas-star) | [Implementações futuras](#implementações-futuras) 
+[Introdução](#introdução-hamburger) | [Sobre o projeto](#sobre-o-projeto) | [Criação e desenvolvimento](#criação-e-desenvolvimento) | [Considerações gerais](#considerações-gerais) | [Estrutura e funcionalidades](#estrutura-e-funcionalidades) | [Instalação e execução](#instalação-e-execução-octocat) | [Tecnologias e bibliotecas utilizadas](#tecnologias-e-bibliotecas-utilizadas-star) | [Implementações futuras](#implementações-futuras) 
 
 ---
 
@@ -22,7 +23,7 @@ Senha - 123456
 Interface _web_ para processamento e envio dos pedidos de uma hamburgueria, de forma ordenada e eficiente.  
 Desenvolvido com React, preferencialmente para _tablets_, mas também responsivo para _mobile_ e _web_.
 
-## Sobre a projeto
+## Sobre o projeto
 
 Um pequeno restaurante, que está crescendo, necessita uma interface em que se possa realizar pedidos utilizando um _tablet_, e enviá-los para a cozinha para que sejam preparados de forma ordenada e eficiente.
 
