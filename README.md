@@ -13,6 +13,7 @@ Cozinha
 Login - cozinha@cozinha.com  
 Senha - 123456 
 ```
+## Índice
 
 [Introdução](#introdução-hamburger) | [Sobre o projeto](#sobre-o-projeto) | [Criação e desenvolvimento](#criação-e-desenvolvimento) | [Considerações gerais](#considerações-gerais) | [Estrutura e funcionalidades](#estrutura-e-funcionalidades) | [Instalação e execução](#instalação-e-execução-octocat) | [Tecnologias e bibliotecas utilizadas](#tecnologias-e-bibliotecas-utilizadas-star) | [Implementações futuras](#implementações-futuras) 
 
